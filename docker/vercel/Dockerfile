@@ -36,3 +36,10 @@ RUN npm i --no-optional dotenv --save-dev
 
 # スタイリング
 RUN npm i --no-optional -D styled-components styled-media-query
+
+# https://github.com/vercel/next.js/issues/21679
+# next:10.0.6 Error: Cannot find module 'webpack'
+# Cannot find module 'sharp'
+RUN npm i --no-optional -D sharp
+# ModuleNotFoundError: Module not found: Error: Can't resolve 'encoding' in '/app/node_modules/node-fetch/lib'
+RUN npm i --no-optional -D encoding

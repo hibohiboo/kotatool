@@ -6,6 +6,7 @@ const MODE =
   process.env.npm_lifecycle_event === 'dev' ? 'development' : 'production'
 const withDebug = !process.env['npm_config_nodebug'] && MODE == 'development'
 const nextConfig = {
+  future: { webpack5: true },
   webpack: (config) => {
     // src ディレクトリをエイリアスのルートに設定
     config.resolve.alias['~'] = resolve(__dirname, 'src')
