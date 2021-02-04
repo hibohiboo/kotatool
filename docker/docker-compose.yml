@@ -1,0 +1,32 @@
+version: "3.8"
+services:
+  zeit_vercel:
+    # Dockerfileビルド
+    build: ./vercel
+    # ディレクトリを共有する。
+    volumes:
+      - ../src:/app/src
+      - ../public:/app/public
+      - ../vercel.json:/app/vercel.json
+      - ../next.config.js:/app/next.config.js
+      - ../.vercelignore:/app/.vercelignore
+      - ../tsconfig.json:/app/tsconfig.json
+      - ../.eslintrc.js:/app/.eslintrc.js
+      - ../.gitignore:/app/.gitignore
+      - ../.babelrc.js:/app/.babelrc.js
+      - ../.prettierrc.js:/app/.prettierrc.js
+      # vercelのキャッシュ
+      - cacheVercelConfig:/root/.config/configstore
+      - cacheVercelLocalData:/root/.local
+    ports:
+      - 3000:3000
+    environment:
+      - CHOKIDAR_USEPOLLING=true # デフォルトの設定の場合、vagrantだとファイルの変更を検知できない。pollingが必要。
+    working_dir: /app
+    # command: [vercel, dev]
+    command: [npm, run, dev]
+
+volumes:
+  # elmのpackageを毎回ダウンロードしなくてもよいように、キャッシュを行う。2か所のキャッシュが必要。
+  cacheVercelConfig:
+  cacheVercelLocalData:
