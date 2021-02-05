@@ -10,6 +10,14 @@ const nextConfig = {
   webpack: (config) => {
     // src ディレクトリをエイリアスのルートに設定
     config.resolve.alias['~'] = resolve(__dirname, 'src')
+
+    // watch options
+    config.watchOptions = {
+      aggregateTimeout: 200,
+      poll: 1000,
+      ignored: /node_modules/,
+    }
+
     return config
   },
   // manifest設定

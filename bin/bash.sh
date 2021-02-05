@@ -15,7 +15,7 @@ if [ $? -eq 0 ]; then
 else
   # 一致しなかった時の処理
   # コンテナを立ち上げて接続
-  cd $docker_dir && docker-compose run $container_name /bin/bash
+  cd $docker_dir && docker-compose run --service-ports $container_name /bin/bash
 fi
 
 
