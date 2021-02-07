@@ -1,4 +1,21 @@
-.countWrapper {
-  color: white;
-  background-color: red;
+.frame {
+  font-size: 16px;
+  font-family: Script;
+  border: double 5px #CCC;
+  padding: 2px 4px;
+  background-color: black;
+  color: #eee;
+}
+
+.wrapper {
+  width: 200px;
+  box-sizing: border-box;
+  display: inline-flex;
+  justify-content: space-between;
+  overflow: hidden;
+  padding: 0 5px;
+}
+
+.withText {
+  vertical-align: bottom;
 }
