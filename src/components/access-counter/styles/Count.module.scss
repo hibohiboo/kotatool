@@ -17,5 +17,21 @@
 }
 
 .withText {
+
   vertical-align: bottom;
+}
+
+.withTextWrapper {
+  font-size: 1.6rem;
+  width: 250px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.withTextWrapperCenter {
+  padding: 5px 0;
+}
+
+.accessCounterWrapper {
+  min-height: 100px;
 }
