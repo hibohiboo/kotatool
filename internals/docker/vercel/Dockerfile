@@ -60,3 +60,9 @@ RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key
 RUN npm i --no-optional -D babel-preset-react-app
 # https://qiita.com/riversun/items/63c5f08c8da604c5ec1a
 RUN npm i --no-optional -D core-js@3
+RUN npm i --no-optional -D sass
+# storybookのwebpackでローダーを使えるようにする
+RUN npm i --no-optional -D css-loader style-loader
+# sass-loader 11以降はwebpack5が必要
+# RUN npm i --no-optional -D --legacy-peer-deps  sass-loader
+RUN npm i --no-optional -D sass-loader@10

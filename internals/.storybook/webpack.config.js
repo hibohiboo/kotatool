@@ -17,5 +17,22 @@ module.exports = ({ config }) => {
     poll: 1000,
     ignored: /node_modules/,
   }
+  // scss を読み込む
+  config.module.rules.push({
+    test: /\.scss$/,
+    use: [
+      'style-loader',
+      {
+        loader: 'css-loader',
+        options: {
+          importLoaders: 1, // 1 => postcss-loader
+          modules: {
+            localIdentName: '[local]___[hash:base64:2]',
+          },
+        },
+      },
+      'sass-loader',
+    ],
+  });
   return config
 }
