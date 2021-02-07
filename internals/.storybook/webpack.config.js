@@ -12,6 +12,10 @@ module.exports = ({ config }) => {
   config.resolve.extensions.push('.ts', '.tsx')
 
   config.resolve.alias['~'] = resolve(__dirname, '../src')
-
+  config.watchOptions = {
+    aggregateTimeout: 200,
+    poll: 1000,
+    ignored: /node_modules/,
+  }
   return config
 }
