@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import format from 'date-fns/format'
 import { auth } from '~/lib/firebase/initFirebase'
 import routes from '~/lib/routes'
+import apiPath from '~/lib/apiPath'
 import * as constants from '~/lib/constants'
 import { updateUser } from '~/lib/firestore/user'
 import { setLatestLoginDate, getLatestLoginDate } from '~/lib/localStorage'
@@ -16,10 +17,20 @@ const signIn = async () => {
   }
 }
 
+// サーバサイドとクライアントサイドの時刻がずれていないことを確認
+const checkDateServerSide = async (date: string) => {
+  const response = await fetch(apiPath.getServerData)
+  const { latestLoginDate } = await response.json()
+  return latestLoginDate === date
+}
+
 const dailyLogin = async (user: firebase.User) => {
   const latestLoginDate = format(new Date(), constants.DATE_FORMAT)
-  console.log('test')
-  if (getLatestLoginDate() !== latestLoginDate) {
+
+  if (
+    getLatestLoginDate() !== latestLoginDate &&
+    (await checkDateServerSide(latestLoginDate))
+  ) {
     await updateUser(user, latestLoginDate)
   }
   setLatestLoginDate(latestLoginDate)

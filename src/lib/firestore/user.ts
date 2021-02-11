@@ -1,10 +1,12 @@
 import firebase from 'firebase/app'
 import { db } from '~/lib/firebase/initFirebase'
+import * as constants from '~/lib/constants'
 import { toSerializeObject, toTimestamp } from '~/lib/firestore/utils'
 
 interface UserData {
   uid: string
   displayName: string
+  loginCount: number
   point: number
   latestLoginDate: string
   createdAt: firebase.firestore.FieldValue
@@ -25,6 +27,7 @@ export const updateUser = async (
     uid,
     displayName,
     latestLoginDate,
+    loginCount: 0,
     point: 0,
     createdAt: firebase.firestore.FieldValue.serverTimestamp(),
     updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
@@ -33,7 +36,8 @@ export const updateUser = async (
   const before = userRef.data()
   users.doc(uid).set({
     ...userData,
-    point: before.point,
+    loginCount: before.loginCount + 1,
+    point: before.point + constants.userPoints.dailyLogin,
     createdAt: before.createdAt,
   })
 }
