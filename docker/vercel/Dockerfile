@@ -54,3 +54,4 @@ RUN npm install eslint-plugin-react-hooks --save-dev
 ### firebase
 RUN npm i --no-optional firebase
 RUN npm i --no-optional date-fns
+RUN npm i --no-optional date-fns-tz

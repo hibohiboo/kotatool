@@ -30,7 +30,6 @@ export const updateUser = async (
     updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
   }
   if (!userRef.exists) users.doc(uid).set(userData)
-
   const before = userRef.data()
   users.doc(uid).set({
     ...userData,

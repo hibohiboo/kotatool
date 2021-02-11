@@ -5,8 +5,9 @@ import { auth } from '~/lib/firebase/initFirebase'
 import routes from '~/lib/routes'
 import * as constants from '~/lib/constants'
 import { updateUser } from '~/lib/firestore/user'
-
+import { setLatestLoginDate, getLatestLoginDate } from '~/lib/localStorage'
 import type firebase from 'firebase'
+
 const signIn = async () => {
   try {
     await auth.signInAnonymously()
@@ -14,9 +15,14 @@ const signIn = async () => {
     console.error('認証エラー', e)
   }
 }
-const loginBonus = (user: firebase.User) => {
+
+const dailyLogin = async (user: firebase.User) => {
   const latestLoginDate = format(new Date(), constants.DATE_FORMAT)
-  updateUser(user, latestLoginDate)
+  console.log('test')
+  if (getLatestLoginDate() !== latestLoginDate) {
+    await updateUser(user, latestLoginDate)
+  }
+  setLatestLoginDate(latestLoginDate)
 }
 
 export const useSignIn = () => {
@@ -27,7 +33,7 @@ export const useSignIn = () => {
     return auth.onAuthStateChanged((user) => {
       if (user) {
         setCurrentUser(user)
-        loginBonus(user)
+        ;(async () => await dailyLogin(user))()
       } else {
         ;(async () => await signIn())()
       }
