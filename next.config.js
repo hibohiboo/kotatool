@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const { resolve } = require('path')
 const withPWA = require('next-pwa')
-require('dotenv').config()
+
 const MODE =
   process.env.npm_lifecycle_event === 'dev' ? 'development' : 'production'
-const withDebug = !process.env['npm_config_nodebug'] && MODE == 'development'
+
 const nextConfig = {
+  reactStrictMode: true,
   future: { webpack5: true },
   webpack: (config) => {
     // src ディレクトリをエイリアスのルートに設定
