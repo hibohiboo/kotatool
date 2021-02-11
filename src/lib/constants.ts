@@ -14,3 +14,4 @@ export const viewTable = {
 export const TWITTER_USER_NAME = 'hibohiboo'
 export const SITE_NAME = 'こたつーる'
 export const SITE_DOMAIN = 'https://kotatool.vercel.app'
+export const DATE_FORMAT = 'yyyy/MM/dd'
