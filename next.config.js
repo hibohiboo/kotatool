@@ -28,4 +28,5 @@ const nextConfig = {
 }
 
 // PWA に対応
-module.exports = withPWA(nextConfig)
+// GenerateSW has been called multiple times, perhaps due to running webpack in --watch mode. The precache manifest generated after the first call may be inaccurate! Please see https://github.com/GoogleChrome/workbox/issues/1790 for more information
+module.exports = MODE === 'development' ? nextConfig : withPWA(nextConfig)

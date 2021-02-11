@@ -15,7 +15,7 @@ export default function Home() {
       <SocialMeta title={title} />
 
       <main className={styles.main}>
-        <h1 className={styles.title}>{title}</h1>
+        <h1 className={styles.title}>{`${title}🍊`}</h1>
         <img
           className={styles.heroImage}
           src="/assets/top.jpg"
