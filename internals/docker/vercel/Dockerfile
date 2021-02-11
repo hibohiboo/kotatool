@@ -26,7 +26,7 @@ RUN sed -i -e "s/\(\"scripts\": {\)/\1\n    \"lint\": \"eslint --ext .ts,.tsx --
 # Story Book
 # https://github.com/storybookjs/storybook/issues/12983
 RUN npm i -D @storybook/cli
-RUN npx sb upgrade --prerelease
+# RUN npx sb upgrade --prerelease
 RUN npx --legacy-peer-deps sb init --type react
 # RUN npm i --no-optional -D --legacy-peer-deps @storybook/react @storybook/addon-links @storybook/addon-essentials @storybook/addon-actions
 RUN npm i --no-optional -D babel-preset-react-app
@@ -50,3 +50,19 @@ RUN npm i --no-optional -D webpack@4
 RUN npm i --no-optional -D sharp
 RUN npm i --no-optional -D encoding
 
+### puppetieer troubleshooting
+RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
+  && sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' \
+  && apt-get update \
+  && apt-get install -y google-chrome-unstable fonts-ipafont-gothic fonts-wqy-zenhei fonts-thai-tlwg fonts-kacst ttf-freefont \
+  --no-install-recommends \
+  && rm -rf /var/lib/apt/lists/*
+RUN npm i --no-optional -D babel-preset-react-app
+# https://qiita.com/riversun/items/63c5f08c8da604c5ec1a
+RUN npm i --no-optional -D core-js@3
+RUN npm i --no-optional -D sass
+# storybookのwebpackでローダーを使えるようにする
+RUN npm i --no-optional -D css-loader style-loader
+# sass-loader 11以降はwebpack5が必要
+# RUN npm i --no-optional -D --legacy-peer-deps  sass-loader
+RUN npm i --no-optional -D sass-loader@10

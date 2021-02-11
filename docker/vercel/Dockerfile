@@ -46,3 +46,6 @@ RUN npm i --no-optional -D --legacy-peer-deps webpack@latest
 RUN npm i --no-optional -D sharp
 # ModuleNotFoundError: Module not found: Error: Can't resolve 'encoding' in '/app/node_modules/node-fetch/lib'
 RUN npm i --no-optional -D encoding
+
+# use sass css module
+RUN npm i --no-optional -D sass
