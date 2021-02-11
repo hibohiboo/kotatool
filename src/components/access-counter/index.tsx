@@ -8,6 +8,7 @@ const AccessCounter: React.FC = () => {
   const [accessNuber, setAccessNumber] = useState(0)
   const [accessStr, setAccessStr] = useState('LOADING')
   useEffect(() => {
+    if (!apiUrl) return
     ;(async () => {
       try {
         const response = await fetch(apiUrl, { method: 'POST' })
