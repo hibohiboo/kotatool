@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const { resolve } = require('path')
-const withOffline = require('next-offline')
+const withPWA = require('next-pwa')
 require('dotenv').config()
 const MODE =
   process.env.npm_lifecycle_event === 'dev' ? 'development' : 'production'
@@ -21,30 +21,11 @@ const nextConfig = {
     return config
   },
   // manifest設定
-  target: 'serverless',
-  transformManifest: (manifest) => ['/'].concat(manifest), // add the homepage to the cache
-  generateInDevMode: true,
-  workboxOpts: {
-    swDest: 'static/service-worker.js',
-    runtimeCaching: [
-      {
-        urlPattern: /^https?.*/,
-        handler: 'NetworkFirst',
-        options: {
-          cacheName: 'https-calls',
-          networkTimeoutSeconds: 15,
-          expiration: {
-            maxEntries: 150,
-            maxAgeSeconds: 30 * 24 * 60 * 60, // 1 month
-          },
-          cacheableResponse: {
-            statuses: [0, 200],
-          },
-        },
-      },
-    ],
+  pwa: {
+    dest: 'public', // swの出力ディレクトリ
+    // runtimeCaching: []
   },
 }
 
 // PWA に対応
-module.exports = withOffline(nextConfig)
+module.exports = withPWA(nextConfig)

@@ -1,0 +1,17 @@
+{
+  "name":             "こたつーる🍊",
+  "short_name":       "こたつーる🍊",
+  "description":      "こたつでまったりTRPGしたい",
+  "start_url":        "/",
+  "display":          "standalone",
+  "orientation":      "portrate-primary",
+  "background_color": "#fff",
+  "theme_color":      "#fff",
+  "dir": "ltr",
+  "icons": [
+      {
+          "src": "/kotatool.svg",
+          "sizes": "any"
+      }
+  ]
+}
