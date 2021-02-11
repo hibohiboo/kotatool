@@ -49,3 +49,5 @@ RUN npm i --no-optional -D encoding
 
 # use sass css module
 RUN npm i --no-optional -D sass
+RUN npm i --no-optional -D next-pwa@beta
+RUN npm install eslint-plugin-react-hooks --save-dev

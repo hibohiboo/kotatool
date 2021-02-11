@@ -36,3 +36,5 @@ yarn-error.log*
 package-lock.json
 .env
 debug.log
+**/public/workbox-*.js
+**/public/sw.js
