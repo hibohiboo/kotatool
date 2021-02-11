@@ -13,7 +13,7 @@ const component: React.FC<{
   description = 'こたつでまったりTRPG',
   url = '/',
   image = '/assets/top.jpg',
-  keywords = 'こたつーる,キャラクターシート,TRPG,荒野,開拓',
+  keywords = 'こたつーる,こたつーる🍊,キャラクターシート,TRPG,荒野,開拓',
 }) => (
   <Head>
     <meta name="twitter:site" content={`@${TWITTER_USER_NAME}`} />

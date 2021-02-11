@@ -3,7 +3,7 @@ import styles from '../styles/Home.module.css'
 import AccessCounter from '~/components/access-counter'
 import Footer from '~/components/common/molecules/Footer'
 import SocialMeta from '~/components/common/atoms/SocialMeta'
-const title = 'こたつーる🍊'
+const title = 'こたつーる'
 
 export default function Home() {
   return (

@@ -2,7 +2,7 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Footer from '~/components/common/molecules/Footer'
 import SocialMeta from '~/components/common/atoms/SocialMeta'
-const title = 'こたつーる🍊 ホーム'
+const title = 'こたつーる ホーム'
 
 export default function Home() {
   return (
