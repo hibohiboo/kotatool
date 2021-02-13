@@ -1,6 +1,7 @@
 {
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": true,
+    "source.fixAll.stylelint": true,
   },
   "editor.tabCompletion": "on",
   "eslint.validate": [
@@ -15,5 +16,11 @@
   "prettier.disableLanguages": [
     "markdown"
   ],
-  "liveServer.settings.port": 5502
+  "liveServer.settings.port": 5502,
+  "[scss]": {
+    "editor.formatOnSave": false,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "css.validate": false,
+  "scss.validate": false,
 }

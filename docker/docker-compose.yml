@@ -28,6 +28,6 @@ services:
     command: [npm, run, dev]
 
 volumes:
-  # elmのpackageを毎回ダウンロードしなくてもよいように、キャッシュを行う。2か所のキャッシュが必要。
+  # vercelを毎回認証しなくてもよいように、キャッシュを行う。2か所のキャッシュが必要。
   cacheVercelConfig:
   cacheVercelLocalData:

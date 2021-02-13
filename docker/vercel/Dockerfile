@@ -55,3 +55,14 @@ RUN npm install eslint-plugin-react-hooks --save-dev
 RUN npm i --no-optional firebase
 RUN npm i --no-optional date-fns
 RUN npm i --no-optional date-fns-tz
+
+RUN npm i -D --no-optional stylelint
+RUN npm i -D --no-optional stylelint-scss
+RUN npm i -D --no-optional stylelint-declaration-use-variable
+RUN npm i -D --no-optional stylelint-prettier
+RUN npm i -D --no-optional stylelint-config-prettier
+RUN npm i -D --no-optional stylelint-config-recommended-scss
+# displayの値によって無視されてしまうプロパティを見つけてくれるplugin
+RUN npm i -D --no-optional stylelint-declaration-block-no-ignored-properties
+# ブラウザ非対応のプロパティがないかを検知してくれるplugin
+RUN npm i -D --no-optional stylelint-no-unsupported-browser-features

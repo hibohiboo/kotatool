@@ -1,21 +1,25 @@
-@import "~sanitize.css";
+@import '~sanitize.css';
 
 html,
 body {
   padding: 0;
   margin: 0;
-  font-size: 62.5%; // 1rem = 10pxとする。
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,  YuGothic, "Yu Gothic Medium", "Yu Gothic", Verdana, Meiryo, sans-serif;
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, YuGothic,
+    'Yu Gothic Medium', 'Yu Gothic', Verdana, Meiryo, sans-serif;
+  font-size: 62.5%; // 1rem = 10pxとする。
 }
 
-b, strong {
-	font-family: -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI semibold", "Helvetica Neue", HelveticaNeue, YuGothic, "Yu Gothic", "Segoe UI", Verdana, Meiryo, sans-serif;
+b,
+strong {
+  font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Segoe UI semibold',
+    'Helvetica Neue', HelveticaNeue, YuGothic, 'Yu Gothic', 'Segoe UI', Verdana,
+    Meiryo, sans-serif;
 }
 
 a {
   color: inherit;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 * {

@@ -1,30 +1,29 @@
 .frame {
-  font-size: 16px;
-  font-family: Script;
-  border: double 5px #CCC;
   padding: 2px 4px;
-  background-color: black;
+  font-family: Script, sans-serif;
+  font-size: 16px;
   color: #eee;
+  background-color: black;
+  border: double 5px #ccc;
 }
 
 .wrapper {
-  width: 200px;
   box-sizing: border-box;
   display: inline-flex;
   justify-content: space-between;
-  overflow: hidden;
+  width: 200px;
   padding: 0 5px;
+  overflow: hidden;
 }
 
 .withText {
-
   vertical-align: bottom;
 }
 
 .withTextWrapper {
-  font-size: 1.6rem;
   width: 250px;
   margin: 0 auto;
+  font-size: 1.6rem;
   text-align: center;
 }
 
