@@ -1,36 +1,39 @@
-.frame {
-  padding: 2px 4px;
-  font-family: Script, sans-serif;
-  font-size: 16px;
-  color: #eee;
-  background-color: black;
-  border: double 5px #ccc;
-}
+.kota {
+  &Frame {
+    padding: 2px 4px;
+    font-family: Script, sans-serif;
+    font-size: 16px;
+    color: #eee;
+    background-color: black;
+    border: double 5px #ccc;
+  }
 
-.wrapper {
-  box-sizing: border-box;
-  display: inline-flex;
-  justify-content: space-between;
-  width: 200px;
-  padding: 0 5px;
-  overflow: hidden;
-}
+  &Wrapper {
+    box-sizing: border-box;
+    display: inline-flex;
+    justify-content: space-between;
+    width: 200px;
+    padding: 0 5px;
+    overflow: hidden;
+  }
 
-.withText {
-  vertical-align: bottom;
-}
+  &WithText {
+    vertical-align: bottom;
+  }
 
-.withTextWrapper {
-  width: 250px;
-  margin: 0 auto;
-  font-size: 1.6rem;
-  text-align: center;
-}
+  &WithTextWrapper {
+    width: 250px;
+    margin: 0 auto;
+    font-size: 1.6rem;
+    text-align: center;
+  }
 
-.withTextWrapperCenter {
-  padding: 5px 0;
-}
+  &WithTextWrapperCenter {
+    padding: 5px 0;
+  }
 
-.accessCounterWrapper {
-  min-height: 100px;
+  &AccessCounterWrapper {
+    min-height: 100px;
+    text-align: center;
+  }
 }

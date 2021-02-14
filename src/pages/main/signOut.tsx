@@ -1,5 +1,5 @@
 import styles from '../../styles/Home.module.css'
-import Footer from '~/components/common/molecules/Footer'
+import Footer from '~/layouts/molecules/Footer'
 import { useSignOut } from '~/foundations/auth/useAuth'
 import LinkButton from '~/components/atoms/LinkButton'
 import routes from '~/lib/routes'

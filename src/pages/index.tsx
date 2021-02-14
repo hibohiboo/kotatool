@@ -1,30 +1,38 @@
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import styles from '../styles/Home.module.scss'
 import AccessCounter from '~/components/access-counter'
-import Footer from '~/components/common/molecules/Footer'
-import SocialMeta from '~/components/common/atoms/SocialMeta'
+import Footer from '~/layouts/molecules/Footer'
+import SocialMeta from '~/layouts/atoms/SocialMeta'
 import LoginButton from '~/components/atoms/LoginButton'
 import routes from '~/lib/routes'
 const title = 'こたつーる'
 
 export default function Home() {
   return (
-    <div className={styles.container}>
+    <div className={styles.kotaContainer}>
       <Head>
         <title>{title}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <SocialMeta title={title} />
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>{`${title}🍊`}</h1>
-        <img
-          className={styles.heroImage}
-          src="/assets/top.jpg"
-          alt="おやすみなさい"
-        />
-        <AccessCounter />
+      <main className={styles.kotaMain}>
+        <h1 className={styles.kotaTitle}>{`${title}🍊`}</h1>
+        <div className={styles.kotaMainArea}>
+          <img
+            className={styles.kotaHeroImage}
+            src="/assets/top.jpg"
+            alt="おやすみなさい"
+          />
+          <AccessCounter />
+        </div>
         <LoginButton href={routes.home} text="こたつに入る" />
+        <ul className={styles.kotaUl}>
+          <li>ようこそいらっしゃいました</li>
+          <li>適当に入ってまったりしてってください</li>
+          <li>気が向いたときに更新してます</li>
+          <li>おやすみなさい</li>
+        </ul>
       </main>
 
       <Footer />

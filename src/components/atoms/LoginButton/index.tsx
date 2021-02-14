@@ -1,4 +1,5 @@
-import styles from './LoginButton.module.scss'
+import classNames from 'classnames'
+
 import Link from 'next/link'
 const LoginButton: React.FC<{ href: string; text: string }> = ({
   href,
@@ -6,7 +7,7 @@ const LoginButton: React.FC<{ href: string; text: string }> = ({
 }) => {
   return (
     <Link href={href}>
-      <a className={styles.btn}>{text}</a>
+      <a className={classNames('button', 'is-primary', 'is-large')}>{text}</a>
     </Link>
   )
 }

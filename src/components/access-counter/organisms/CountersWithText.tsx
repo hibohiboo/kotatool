@@ -3,9 +3,9 @@ import styles from '../styles/Count.module.scss'
 
 const CountersWithText: React.FC<{ num: number }> = ({ num }) => {
   return (
-    <div className={styles.withTextWrapper}>
+    <div className={styles.kotaWithTextWrapper}>
       <div>あなたは</div>
-      <div className={styles.withTextWrapperCenter}>
+      <div className={styles.kotaWithTextWrapperCenter}>
         <Counters num={num} />
         人目
       </div>

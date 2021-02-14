@@ -22,7 +22,7 @@ const AccessCounter: React.FC = () => {
   }, [])
 
   return (
-    <div className={styles.accessCounterWrapper}>
+    <div className={styles.kotaAccessCounterWrapper}>
       {accessStr ? accessStr : <CountersWithText num={accessNuber} />}
     </div>
   )

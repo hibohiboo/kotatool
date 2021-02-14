@@ -15,6 +15,7 @@ services:
       - ../.gitignore:/app/.gitignore
       - ../.babelrc.js:/app/.babelrc.js
       - ../.prettierrc.js:/app/.prettierrc.js
+      - ../postcss.config.json:/app/postcss.config.json
       - ../.env:/app/.env
       # vercelのキャッシュ
       - cacheVercelConfig:/root/.config/configstore

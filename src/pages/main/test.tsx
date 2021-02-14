@@ -1,5 +1,5 @@
 import styles from '../../styles/Home.module.css'
-import Footer from '~/components/common/molecules/Footer'
+import Footer from '~/layouts/molecules/Footer'
 import { useAuth } from '~/foundations/auth/useAuth'
 
 export default function Page() {
