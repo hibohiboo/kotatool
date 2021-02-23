@@ -20,16 +20,8 @@ export default class MyDocument extends Document {
           <meta charSet="utf-8" />
           {/* PWA primary color */}
           <meta name="theme-color" content={'orange'} />
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1"
-          ></meta>
           <link rel="manifest" href="/manifest.json" />
           <link rel="icon" href="/favicon.ico" />
-          <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-          />
           <script dangerouslySetInnerHTML={{ __html: gtmLayer }} />
           <script dangerouslySetInnerHTML={{ __html: gtmScript }} />
         </Head>

@@ -72,3 +72,4 @@ RUN npm i -D --no-optional postcss-preset-env postcss-flexbugs-fixes
 RUN npm i -D classnames
 # cssフレームワーク
 RUN npm i -D bootstrap@next
+RUN npm i -D stylelint-config-standard stylelint-config-recess-order

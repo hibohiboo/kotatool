@@ -16,6 +16,7 @@ const component: React.FC<{
   keywords = 'こたつーる,こたつーる🍊,キャラクターシート,TRPG,荒野,開拓',
 }) => (
   <Head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="twitter:site" content={`@${TWITTER_USER_NAME}`} />
     <meta name="twitter:creator" content={`@${TWITTER_USER_NAME}`} />
     <meta
