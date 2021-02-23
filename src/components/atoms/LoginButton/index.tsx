@@ -7,7 +7,7 @@ const LoginButton: React.FC<{ href: string; text: string }> = ({
 }) => {
   return (
     <Link href={href}>
-      <a className={classNames('button', 'is-primary', 'is-large')}>{text}</a>
+      <a className={classNames('btn', 'btn-primary', 'btn-lg')}>{text}</a>
     </Link>
   )
 }

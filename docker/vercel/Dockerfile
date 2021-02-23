@@ -67,8 +67,8 @@ RUN npm i -D --no-optional stylelint-declaration-block-no-ignored-properties
 # ブラウザ非対応のプロパティがないかを検知してくれるplugin
 RUN npm i -D --no-optional stylelint-no-unsupported-browser-features
 
-# cssフレームワーク
-RUN npm i -D --no-optional bulma
 
 RUN npm i -D --no-optional postcss-preset-env postcss-flexbugs-fixes
 RUN npm i -D classnames
+# cssフレームワーク
+RUN npm i -D bootstrap@next

@@ -1,10 +1,11 @@
 @import '~sanitize.css';
-@import './my-bulma.scss';
+@import './my-bootstrap.scss';
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: $family-sans-serif;
+  font-family: $family-sans-serif-standard;
   font-size: 62.5%; // 1rem = 10pxとする。
 }
 
