@@ -1,0 +1,21 @@
+AccessCount:
+  post:
+    summary: "アクセス数取得"
+    tags:
+      - gas
+    operationId: message-list
+    responses:
+      "400":
+        $ref: "../errors/bad-request.yml#/Error"
+      "500":
+        $ref: "../errors/server-error.yml#/Error"
+      "200":
+        description: Expected response
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                $ref: "../schemas/access-count.yml#/Schema"
+              example:
+                $ref: "../examples/access-count.yml#/Example"

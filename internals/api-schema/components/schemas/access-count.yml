@@ -1,0 +1,8 @@
+Schema:
+  type: object
+  properties:
+    accessNumber:
+      description: アクセスカウント
+      type: int
+      fromat: int64
+      default: ""

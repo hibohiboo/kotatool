@@ -1,0 +1,17 @@
+openapi: 3.0.3
+info:
+  title: こたつーる
+  description: こたつーるにまつわるAPIを管理する
+  version: 0.0.1
+  contact:
+    name: hibohiboo
+    url: https://kotatool.vercel.app/
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+servers:
+  - url: https://script.google.com
+paths:
+  /macros/s/AKfycbwmAh-bFhXIhPrZJoD2SOz5e5JgTW2M8i0qbWv3wmNuFEV_exCpdWgt/exec:
+    $ref: "./components/paths/gas.yml#/AccessCount"
+

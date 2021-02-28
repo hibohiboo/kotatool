@@ -1,0 +1,12 @@
+Error:
+  description: クライアントサイドのエラー
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          message:
+            type: string
+            default: ""
+            examples:
+              - "Bad request."
