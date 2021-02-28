@@ -66,3 +66,8 @@ RUN npm i --no-optional -D css-loader style-loader
 # sass-loader 11以降はwebpack5が必要
 # RUN npm i --no-optional -D --legacy-peer-deps  sass-loader
 RUN npm i --no-optional -D sass-loader@10
+
+RUN npm i -D classnames
+# cssフレームワーク
+RUN npm i -D bootstrap@next
+RUN npm i -D stylelint-config-standard stylelint-config-recess-order

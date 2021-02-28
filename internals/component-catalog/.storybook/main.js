@@ -1,6 +1,6 @@
 module.exports = {
   // ディレクトリと拡張子の変更
-  stories: ['../internals/stories/**/*.stories.tsx'],
+  stories: ['../internals/component-catalog/stories/**/*.stories.tsx'],
   addons: [
     // 必要に応じて追加
     '@storybook/addon-knobs/register',
