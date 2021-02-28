@@ -8,5 +8,5 @@ Error:
           message:
             type: string
             default: ""
-            examples:
-              - "Bad request."
+      example:
+        message: "Bad request."

@@ -8,5 +8,5 @@ Error:
           message:
             type: string
             default: ""
-            examples:
-              - "Server error."
+      example:
+        message: "Server error."

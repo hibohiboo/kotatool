@@ -14,8 +14,6 @@ AccessCount:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                $ref: "../schemas/access-count.yml#/Schema"
-              example:
-                $ref: "../examples/access-count.yml#/Example"
+              $ref: "../schemas/access-count.yml#/Schema"
+            example:
+              $ref: "../examples/access-count.yml#/Example"
