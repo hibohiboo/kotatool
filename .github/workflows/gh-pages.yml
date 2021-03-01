@@ -38,7 +38,7 @@ jobs:
         run: npm i
 
       - name: StoryBook Make
-        run: npx build-storybook -c ./.storybook -o ./component-catalog
+        run: npx build-storybook -c ./.storybook -o ./component-catalog --no-dll
         working-directory: ./internals/component-catalog
 
       - name: StoryBook Move files
