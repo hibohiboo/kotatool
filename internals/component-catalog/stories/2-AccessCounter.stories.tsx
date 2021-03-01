@@ -1,5 +1,3 @@
-import React from 'react'
-
 import Count from '~/components/access-counter/atoms/Count'
 import Counters from '~/components/access-counter/molecules/Counters'
 import CountersWithText from '~/components/access-counter/organisms/CountersWithText'
