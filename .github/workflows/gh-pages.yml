@@ -18,17 +18,17 @@ jobs:
 
       - name: Setup OpenAPI
         run: npm ci
-        working-directory: ./internals/component-catalog
+        working-directory: ./internals/api-schema
 
       - name: Make
         run: npm run redoc
-        working-directory: ./internals/component-catalog
+        working-directory: ./internals/api-schema
 
 
       - name: Move files
         run: |
           mkdir ./public
-          mv ./internals/component-catalog/dist/index.html ./public/
+          mv ./internals/api-schema/dist/index.html ./public/
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
