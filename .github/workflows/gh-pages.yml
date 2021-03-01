@@ -35,7 +35,7 @@ jobs:
         working-directory: ./internals/component-catalog
 
       - name: StoryBook Make
-        run: npx build-storybook -c ./internals/component-catalog/.storybook -o ./dist
+        run: npx build-storybook -c ./.storybook -o ./dist
         working-directory: ./internals/component-catalog
 
       - name: StoryBook Move files
