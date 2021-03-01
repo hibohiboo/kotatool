@@ -38,13 +38,13 @@ jobs:
         run: npm i
 
       - name: StoryBook Make
-        run: npx build-storybook -c ./.storybook -o ./dist
+        run: npx build-storybook -c ./.storybook -o ./component-catalog
         working-directory: ./internals/component-catalog
 
       - name: StoryBook Move files
         run: |
           mkdir -p ./docs/publish/component-catalog
-          mv ./internals/component-catalog/dist ./docs/publish/component-catalog
+          mv ./internals/component-catalog/component-catalog ./docs/publish/
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
