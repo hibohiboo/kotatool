@@ -34,6 +34,9 @@ jobs:
         run: npm ci
         working-directory: ./internals/component-catalog
 
+      - name: StoryBook Setup for es.string.pad-start.js
+        run: npm i
+
       - name: StoryBook Make
         run: npx build-storybook -c ./.storybook -o ./dist
         working-directory: ./internals/component-catalog
