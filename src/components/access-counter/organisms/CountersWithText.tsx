@@ -1,3 +1,4 @@
+import React from 'react'
 import Counters from '../molecules/Counters'
 import styles from '../styles/Count.module.scss'
 
