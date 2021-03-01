@@ -71,3 +71,6 @@ RUN npm i -D classnames
 # cssフレームワーク
 RUN npm i -D bootstrap@next
 RUN npm i -D stylelint-config-standard stylelint-config-recess-order
+
+# story book github actions 用
+RUN npm i  -D babel-plugin-react-require

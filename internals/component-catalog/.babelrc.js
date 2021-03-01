@@ -2,6 +2,7 @@
 module.exports = {
   presets: ['next/babel'],
   plugins: [
+    'react-require',
     ['styled-components', { ssr: true, displayName: true, preprocess: false }],
   ],
 }
