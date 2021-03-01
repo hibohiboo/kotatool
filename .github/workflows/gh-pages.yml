@@ -31,7 +31,7 @@ jobs:
           mv ./internals/api-schema/dist/index.html ./docs/publish/api-schema/
 
       - name: StoryBook Setup
-        run: npm ci && npx sb init --type react
+        run: npm ci
         working-directory: ./internals/component-catalog
 
       - name: StoryBook Make
