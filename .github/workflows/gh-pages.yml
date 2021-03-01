@@ -16,19 +16,32 @@ jobs:
         with:
           node-version: '12.x'
 
-      - name: Setup OpenAPI
+      - name: OpenAPI Setup
         run: npm ci
         working-directory: ./internals/api-schema
 
-      - name: Make
+      - name: OpenAPI Make
         run: npm run redoc
         working-directory: ./internals/api-schema
 
 
-      - name: Move files
+      - name: OpenAPI Move files
         run: |
           mkdir -p ./docs/publish/api-schema
           mv ./internals/api-schema/dist/index.html ./docs/publish/api-schema/
+
+      - name: StoryBook Setup
+        run: npm ci
+        working-directory: ./internals/component-catalog
+
+      - name: StoryBook Make
+        run: npx build-storybook -c ./internals/component-catalog/.storybook -o ./dist
+        working-directory: ./internals/component-catalog
+
+      - name: StoryBook Move files
+        run: |
+          mkdir -p ./docs/publish/component-catalog
+          mv ./internals/component-catalog/dist ./docs/publish/component-catalog
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
