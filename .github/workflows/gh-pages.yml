@@ -27,11 +27,11 @@ jobs:
 
       - name: Move files
         run: |
-          mkdir ./public
-          mv ./internals/api-schema/dist/index.html ./public/
+          mkdir -p ./publish
+          mv ./internals/api-schema/dist/index.html ./publish/
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
+          publish_dir: ./publish
