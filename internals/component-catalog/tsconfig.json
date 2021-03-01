@@ -4,8 +4,8 @@
     "paths": {
       "~/*": ["../../src/*"]
     },
-    "target": "esnext",
-    "lib": ["dom", "dom.iterable", "es7", "es2017", "esnext"],
+    "target": "es2020",
+    "lib": ["dom", "dom.iterable", "es7", "es2017", "es2020", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
