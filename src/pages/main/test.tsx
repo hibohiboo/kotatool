@@ -1,4 +1,4 @@
-import styles from '../../styles/Home.module.css'
+import styles from '../../styles/Home.module.scss'
 import Footer from '~/layouts/molecules/Footer'
 import { useAuth } from '~/foundations/auth/useAuth'
 
