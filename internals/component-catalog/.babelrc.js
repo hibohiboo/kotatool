@@ -2,8 +2,6 @@
 module.exports = {
   presets: ['next/babel'],
   plugins: [
-    'react-require',
     ['styled-components', { ssr: true, displayName: true, preprocess: false }],
-    // ["react-css-modules", { "filetypes": { ".scss": {"syntax": "postcss-scss"}}} ] React is not defined 思考錯誤
   ],
 }

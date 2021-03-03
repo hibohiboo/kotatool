@@ -34,7 +34,7 @@ jobs:
         run: npm ci
         working-directory: ./internals/component-catalog
 
-      - name: StoryBook Setup for es.string.pad-start.js
+      - name: StoryBook Setup for ~bootstrap.scss
         run: npm i bootstrap@next
 
       - name: StoryBook Make
