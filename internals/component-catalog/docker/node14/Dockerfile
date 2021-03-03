@@ -13,7 +13,7 @@ RUN npm ci
 # https://github.com/storybookjs/storybook/issues/12983
 RUN npm i -D @storybook/cli@next
 # RUN npx sb upgrade --prerelease
-RUN npx --legacy-peer-deps sb init --type react
+RUN npx --force sb init --type react --builder webpack5
 # RUN npm i --no-optional -D --legacy-peer-deps @storybook/react @storybook/addon-links @storybook/addon-essentials @storybook/addon-actions
 RUN npm i --no-optional -D babel-preset-react-app
 RUN npm i --no-optional -D @storybook/addon-knobs@next
@@ -36,3 +36,6 @@ RUN npm i --no-optional -D html-webpack-plugin@5 --force
 # : SassError: Can't find stylesheet to import. @import '~bootstrap/scss/functions';
 WORKDIR /app
 RUN npm i --no-optional -D bootstrap@next
+# Error from chokidar 対策。 https://yatta47.hateblo.jp/entry/2020/11/21/213106
+# コンテナのfs.inotify.max_user_watchesは変えられないので、動かしているホストで実行。
+# RUN sysctl fs.inotify.max_user_watches=24288

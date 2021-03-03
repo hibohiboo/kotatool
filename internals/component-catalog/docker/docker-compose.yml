@@ -13,6 +13,7 @@ services:
       # - ../../../next.config.js:/app/next.config.js
       # - ../../../.vercelignore:/app/.vercelignore
       - ../tsconfig.json:/app/internals/component-catalog/tsconfig.json
+      - ../tsconfig.json:/app/tsconfig.json
       # - ../../../.eslintrc.js:/app/.eslintrc.js
       # - ../../../.gitignore:/app/.gitignore
       # - ../../../.babelrc.js:/app/internals/component-catalog/.babelrc.js
