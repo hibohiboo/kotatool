@@ -4,11 +4,11 @@ module.exports = ({ config }) => {
   config.resolve.extensions.push('.ts', '.tsx')
   config.resolve.alias['~'] = resolve(__dirname, '../../../src')
 
-  config.watchOptions = {
-    aggregateTimeout: 200,
-    poll: 1000,
-    ignored: /node_modules/,
-  }
+  // config.watchOptions = {
+  //   aggregateTimeout: 200,
+  //   poll: 1000,
+  //   ignored: /node_modules/,
+  // }
 
   // tsを読み込む
   config.module.rules.push({
@@ -26,13 +26,37 @@ module.exports = ({ config }) => {
       {
         loader: 'css-loader',
         options: {
-          importLoaders: 1, // 1 => postcss-loader
+          importLoaders: 1, // 1 => postcss-loader, 2=> postcss-loader, sass-loader
           modules: {
             localIdentName: '[local]___[hash:base64:2]',
           },
         },
       },
-      'sass-loader',
+      //  {
+      //   loader: 'postcss-loader', // Run post css actions
+      //   options: {
+      //     plugins: function () { // post css plugins, can be exported to postcss.config.js
+      //       return [
+      //         // require('precss'),
+      //         require('autoprefixer')
+      //       ];
+      //     }
+      //   }
+      // },
+      {
+        loader: "sass-loader",
+        options: {
+          // dart-sass を優先
+          implementation: require('sass'),
+          sassOptions: {
+            // fibers を使わない場合は以下で false を指定. fibersは非同期でコンパイル速度を上げるために使用
+            fiber: require('fibers'),
+          },
+          // ソースマップを有効に
+          sourceMap: true,
+          webpackImporter: true,
+        },
+      },
     ],
   });
   return config
