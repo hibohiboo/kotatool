@@ -1,19 +1,15 @@
 import { useEffect, useState } from 'react'
 import CountersWithText from './organisms/CountersWithText'
 import styles from './styles/Count.module.scss'
-import type { AccessNumber } from '~/types/openapi'
-
-const apiUrl = process.env.NEXT_PUBLIC_GAS_ACCESS_NUMBER
+import { fetchAccessNumber } from '~/lib/apiClient/accessCounter'
 
 const AccessCounter: React.FC = () => {
   const [accessNuber, setAccessNumber] = useState(0)
   const [accessStr, setAccessStr] = useState('LOADING')
   useEffect(() => {
-    if (!apiUrl) return
     ;(async () => {
       try {
-        const response = await fetch(apiUrl, { method: 'POST' })
-        const json: AccessNumber = await response.json()
+        const json = await fetchAccessNumber()
         setAccessStr('')
         setAccessNumber(json.accessNumber)
       } catch (_) {
