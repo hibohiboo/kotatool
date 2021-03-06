@@ -12,6 +12,7 @@
   "author": "hibohiboo <hibohiboo66+github@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@openapitools/openapi-generator-cli": "^2.1.26",
     "redoc": "^2.0.0-rc.48",
     "redoc-cli": "^0.10.2",
     "swagger-cli": "^4.0.4"
