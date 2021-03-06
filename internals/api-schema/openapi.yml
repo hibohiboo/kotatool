@@ -18,3 +18,12 @@ paths:
     $ref: ./paths/sample-users.yml
   /users/{user_id}:
     $ref: ./paths/sample-users-by-id.yml
+
+components:
+  schemas:
+    AccessNumber:
+      $ref: ./components/schemas/access-count.yml#/AccessNumber
+    User:
+      $ref: ./components/schemas/sample/user.yml
+    UserInput:
+      $ref: ./components/schemas/sample/user_input.yml

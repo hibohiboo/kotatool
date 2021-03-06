@@ -14,6 +14,6 @@ AccessCount:
         content:
           application/json:
             schema:
-              $ref: ../components/schemas/access-count.yml#/AccessNumber
+              $ref: ../openapi.yml#/components/schemas/AccessNumber
             example:
               $ref: ../components/examples/access-count.yml#/Example

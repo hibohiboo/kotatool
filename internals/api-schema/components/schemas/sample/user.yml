@@ -12,4 +12,7 @@ properties:
     description: email address
   name:
     type: string
+    enum:
+      - A
+      - B
     description: name
