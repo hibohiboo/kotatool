@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react'
 import CountersWithText from './organisms/CountersWithText'
 import styles from './styles/Count.module.scss'
-import { GasApi } from '~/lib/openapi/client-axios'
-const api = new GasApi()
+import { GasApi, UserApi, UserApiFp } from '~/lib/openapi/client-axios'
+import axios from 'axios'
+
+const api = new GasApi(undefined, undefined, axios.create())
+const user = new UserApi()
 const apiUrl = process.env.NEXT_PUBLIC_GAS_ACCESS_NUMBER
 
 const AccessCounter: React.FC = () => {
@@ -16,9 +19,7 @@ const AccessCounter: React.FC = () => {
         // const json: { accessNumber: number } = await response.json()
         // setAccessNumber(json.accessNumber)
         const response = await api.getAccessCounter()
-        setAccessNumber(response.data.accessNuber)
-        console.log('access', response.data)
-
+        setAccessNumber(response.data.accessNumber)
         setAccessStr('')
       } catch (_) {
         setAccessStr('ERROR')

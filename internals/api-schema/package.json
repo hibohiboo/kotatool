@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "generate": "swagger-cli bundle -r ./openapi.yml -o ./bundle.yml && openapi-generator-cli generate -g typescript-axios -i ./bundle.yml -o ./dist/client-axios ", 
     "redoc": "npm run build && redoc-cli bundle ./openapi.json --options.menuToggle --options.pathInMiddlePanel  -o ./dist/index.html",
     "build": "swagger-cli bundle -r ./openapi.yml -o ./openapi.json",
     "test": "echo \"Error: no test specified\" && exit 1"

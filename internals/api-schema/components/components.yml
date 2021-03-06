@@ -1,4 +1,0 @@
-components:
-  schemas:
-    accessNumber:
-      $ref: ./schemas/access-count.yml#/Schema

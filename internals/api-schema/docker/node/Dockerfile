@@ -21,3 +21,4 @@ RUN sdk install java 8.0.282-open
 RUN npx openapi-generator-cli version-manager set 5.0.1
 
 # ex) npm run build && npx openapi-generator-cli generate -g typescript-axios -i ./openapi.json -o ./dist/client-axios
+RUN sed -i -e "s/\(\"scripts\": {\)/\1\n    \"generate\": \"openapi-generator-cli generate -g typescript-axios -i .\/bundle.yml -o .\/dist\/client-axios \", /g" /app/package.json
