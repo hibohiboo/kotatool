@@ -1,12 +1,8 @@
 import * as t from "io-ts";
 import { typedDecoder } from './decoder'
-import { typedFetcher } from './fetcher'
+import { fetcher, JsonFetcher } from './fetcher'
 
-type FetchFunc = () => Promise<object>
-const apiUrl = process.env.NEXT_PUBLIC_GAS_ACCESS_NUMBER
 const TAccessNumber = t.exact(t.type({ accessNumber: t.number }));
-const fetcher = typedFetcher(TAccessNumber)
+const accessNumberFetcher = () => fetcher(process.env.NEXT_PUBLIC_GAS_ACCESS_NUMBER, { method: 'POST' })
 
-export const fetchAccessNumber = async (fetchJson?: FetchFunc) =>
-    fetchJson ? typedDecoder(TAccessNumber, await fetchJson())
-              : fetcher(apiUrl, { method: 'POST' })
+export const fetchAccessNumber = async (fetchJson: JsonFetcher =  accessNumberFetcher) => typedDecoder(TAccessNumber, await fetchJson())

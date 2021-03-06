@@ -1,7 +1,4 @@
-import * as t from "io-ts";
-import { typedDecoder } from './decoder'
-type TypedFetcher<T> = (input: RequestInfo, init?: RequestInit) => Promise<T>
-export const typedFetcher = <T>(typeC: t.Type<T>): TypedFetcher<T> => async (input, init) => {
+export const fetcher = async (input, init) => {
   const res = await fetch(input, {
     // credentials: 'include',
     // mode: 'cors',
@@ -11,5 +8,6 @@ export const typedFetcher = <T>(typeC: t.Type<T>): TypedFetcher<T> => async (inp
     throw Error(res.statusText)
   }
 
-  return typedDecoder(typeC, await res.json())
+  return  await res.json()
 }
+export type JsonFetcher = () => Promise<object>
