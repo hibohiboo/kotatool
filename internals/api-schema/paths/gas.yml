@@ -1,0 +1,19 @@
+AccessCount:
+  post:
+    summary: "アクセス数取得"
+    tags:
+      - gas
+    operationId: get-access-counter
+    responses:
+      "400":
+        $ref: "../components/errors/bad-request.yml#/Error"
+      "500":
+        $ref: "../components/errors/server-error.yml#/Error"
+      "200":
+        description: Expected response
+        content:
+          application/json:
+            schema:
+              $ref: "../components/components.yml#/components/schemas/accessNumber"
+            example:
+              $ref: "../components/examples/access-count.yml#/Example"

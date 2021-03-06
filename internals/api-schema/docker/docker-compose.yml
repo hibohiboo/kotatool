@@ -7,6 +7,7 @@ services:
     volumes:
       - ../openapi.yml:/app/openapi.yml
       - ../components:/app/components
+      - ../paths:/app/paths
       - ../dist:/app/dist
     # ports:
     #   - 6006:6006

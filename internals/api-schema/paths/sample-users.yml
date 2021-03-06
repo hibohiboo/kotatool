@@ -1,0 +1,34 @@
+get:
+  operationId: usersGet
+  summary: get user list
+  description: description
+  tags: [user]
+  parameters:
+    - $ref: ../components/parameters/query/sample-page.yml
+    - $ref: ../components/parameters/query/sample-per_page.yml
+  responses:
+    '200':
+      description: ok
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/sample/user_list.yml
+post:
+  operationId: usersPost
+  summary: create new user
+  description: description
+  tags: [user]
+  requestBody:
+    description: user information
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/sample/user_input.yml
+  responses:
+    '201':
+      description: created
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/sample/user.yml

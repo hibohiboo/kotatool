@@ -67,3 +67,4 @@ RUN npm i -D classnames
 # cssフレームワーク
 RUN npm i -D bootstrap@next
 RUN npm i -D stylelint-config-standard stylelint-config-recess-order
+RUN npm i axios

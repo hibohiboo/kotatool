@@ -13,5 +13,8 @@ servers:
   - url: https://script.google.com
 paths:
   /macros/s/AKfycbwmAh-bFhXIhPrZJoD2SOz5e5JgTW2M8i0qbWv3wmNuFEV_exCpdWgt/exec:
-    $ref: "./components/paths/gas.yml#/AccessCount"
-
+    $ref: "./paths/gas.yml#/AccessCount"
+  /users:
+    $ref: ./paths/sample-users.yml
+  /users/{user_id}:
+    $ref: ./paths/sample-users-by-id.yml
