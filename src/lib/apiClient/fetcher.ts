@@ -8,6 +8,7 @@ export const fetcher = async (input, init) => {
     throw Error(res.statusText)
   }
 
-  return  await res.json()
+  return await res.json()
 }
-export type JsonFetcher = () => Promise<object>
+
+export type JsonFetcher = () => Promise<Record<string, unknown>>
