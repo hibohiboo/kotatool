@@ -1,11 +1,11 @@
-FROM node:15.10.0
+FROM node:15.11.0
 
 # コンテナ上の作業ディレクトリ作成
 WORKDIR /app
 
 # 後で確認出来るようにpackage.jsonを作成
 COPY .npmrc /app/.npmrc
-RUN npm install -g npm@7.6.0
+RUN npm install -g npm@7.6.1
 RUN npm init -y
 RUN npm i --no-optional next react react-dom
 
