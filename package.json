@@ -8,7 +8,7 @@
     "build": "next build",
     "dev": "next dev",
     "lint": "eslint --ext .ts,.tsx --ignore-path .gitignore .",
-    "tests": "jest tests/__tests__/.*/*.spec.tsx?$"
+    "tests": "jest tests/io-ts/.*/*.spec.tsx?$"
   },
   "keywords": [],
   "author": "hibohiboo <hibohiboo66+github@gmail.com>",
