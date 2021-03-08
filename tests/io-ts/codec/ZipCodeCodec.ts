@@ -3,7 +3,7 @@ import { isRight, map, right } from 'fp-ts/lib/Either'
 import { pipe } from 'fp-ts/lib/pipeable'
 // https://www.puzzle.ch/de/blog/articles/2019/09/25/data-contracts-and-transformations-with-io-ts
 type ZipCode = string
-const RegexZipCode = /^(\d{3})-?(\d{4})/
+const RegexZipCode = /^(\d{3})-?(\d{4})$/
 
 const isZipCode = (input: unknown): input is ZipCode =>
   RegexZipCode.test(input.toString())
