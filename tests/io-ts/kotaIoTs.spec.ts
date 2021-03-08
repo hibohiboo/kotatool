@@ -3,7 +3,7 @@ import { PathReporter } from 'io-ts/PathReporter'
 import { ZipCodeCodec } from './codec/ZipCodeCodec'
 import { PhoneNumberCodec } from './codec/PhoneNumberCodec'
 import { getErrors, UserDetailCodec } from './codec/UserDetailCodec'
-
+import { UserNameKanaCodec } from './codec/UserNameKanaCodec'
 describe('郵便番号チェック', () => {
   test('郵便番号が正しい場合 ハイフンあり', () => {
     const x = ZipCodeCodec.decode(JSON.parse(`"509-0000"`))
@@ -122,6 +122,76 @@ describe('ユーザ詳細チェック', () => {
     expect(getErrors(x)).toStrictEqual([
       'zipcode: 郵便番号は必須です',
       'phoneNumber: 電話番号の形式が不正です。 : b',
+    ])
+  })
+})
+
+describe('名前（カナ）チェック', () => {
+  test('名前（カナ）が正しい場合', () => {
+    const x = UserNameKanaCodec.decode(JSON.parse(`"ア"`))
+    expect(x).toStrictEqual(right('ア'))
+  })
+  test('エンコードできること', () => {
+    const x = UserNameKanaCodec.decode(JSON.parse(`"ア"`))
+    if (x._tag === 'Right') {
+      expect(UserNameKanaCodec.encode(x.right)).toStrictEqual('ア')
+    } else {
+      expect(false).toBeTruthy()
+    }
+  })
+
+  test('名前（カナ）がnullの場合に失敗すること', () => {
+    const x = UserNameKanaCodec.decode(JSON.parse(`null`))
+    expect(PathReporter.report(x)).toStrictEqual(['文字列を入力してください'])
+  })
+  test('名前（カナ）がundefinedの場合に失敗すること', () => {
+    const x = UserNameKanaCodec.decode(JSON.parse(`null`))
+    expect(PathReporter.report(x)).toStrictEqual(['文字列を入力してください'])
+  })
+  test('名前（カナ）が数字の場合に失敗すること', () => {
+    const x = UserNameKanaCodec.decode(JSON.parse(`1`))
+    expect(PathReporter.report(x)).toStrictEqual(['文字列を入力してください'])
+  })
+  test('名前（カナ）がオブジェクトの場合に失敗すること', () => {
+    const x = UserNameKanaCodec.decode(JSON.parse(`{}`))
+    expect(PathReporter.report(x)).toStrictEqual(['文字列を入力してください'])
+  })
+  test('名前（カナ）が配列の場合に失敗すること', () => {
+    const x = UserNameKanaCodec.decode(JSON.parse(`[]`))
+    expect(PathReporter.report(x)).toStrictEqual(['文字列を入力してください'])
+  })
+  test('名前（カナ）が空白の場合に失敗すること', () => {
+    const x = UserNameKanaCodec.decode(JSON.parse(`""`))
+    expect(PathReporter.report(x)).toStrictEqual(['必須項目です'])
+  })
+  test('名前（カナ）が最大文字数より大きいときに失敗すること', () => {
+    const x = UserNameKanaCodec.decode(JSON.parse(`"アアアアアアアアア"`))
+    expect(PathReporter.report(x)).toStrictEqual([
+      '5文字以内で入力してください',
+    ])
+  })
+  test('名前（カナ）がひらがなの時に失敗すること', () => {
+    const x = UserNameKanaCodec.decode(JSON.parse(`"あ"`))
+    expect(PathReporter.report(x)).toStrictEqual([
+      '全角カタカナで入力してください',
+    ])
+  })
+  test('名前（カナ）が漢字の時に失敗すること', () => {
+    const x = UserNameKanaCodec.decode(JSON.parse(`"亜"`))
+    expect(PathReporter.report(x)).toStrictEqual([
+      '全角カタカナで入力してください',
+    ])
+  })
+  test('名前（カナ）が英語の時に失敗すること', () => {
+    const x = UserNameKanaCodec.decode(JSON.parse(`"a"`))
+    expect(PathReporter.report(x)).toStrictEqual([
+      '全角カタカナで入力してください',
+    ])
+  })
+  test('名前（カナ）が半角ｶﾅの時に失敗すること', () => {
+    const x = UserNameKanaCodec.decode(JSON.parse(`"ｶﾅ"`))
+    expect(PathReporter.report(x)).toStrictEqual([
+      '全角カタカナで入力してください',
     ])
   })
 })
