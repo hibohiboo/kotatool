@@ -1,6 +1,7 @@
 import * as t from 'io-ts'
 import { isRight, map, right } from 'fp-ts/lib/Either'
 import { pipe } from 'fp-ts/lib/pipeable'
+import { PathReporter } from 'io-ts/PathReporter'
 
 describe('JSON.parse()のみ', () => {
   test('stringをobjectと処理するとundefined', () => {
@@ -36,6 +37,13 @@ describe('io-tsを使う', () => {
     const X = t.type({ x: t.number })
     const x = X.decode(JSON.parse(`{"a":123}`))
     expect(isRight(x)).toBeFalsy()
+  })
+  test('オブジェクトのプロパティが一致しない場合にエラーメッセージを取得できること', () => {
+    const X = t.type({ x: t.number })
+    const x = X.decode(JSON.parse(`{"a":123}`))
+    expect(PathReporter.report(x)).toStrictEqual([
+      'Invalid value undefined supplied to : { x: number }/x: number',
+    ])
   })
   test('余分なプロパティがあっても良い', () => {
     const X = t.type({ a: t.number })

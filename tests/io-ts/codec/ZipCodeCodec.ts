@@ -14,7 +14,7 @@ const formatZipCode = (input: ZipCode) => {
 }
 export const ZipCodeCodec = new t.Type<ZipCode, string, unknown>(
   // a unique name for this codec
-  'kota-zip-code',
+  'ZipCode',
   // a custom type guard
   isZipCode,
   // succeeds if a value of type I can be decoded to a value of type A
