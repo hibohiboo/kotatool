@@ -6,24 +6,26 @@ type ZipCode = number
 const RegexZipCode = /^(\d{3})-?(\d{4})$/
 
 const isZipCode = (input: unknown): input is ZipCode =>
-  RegexZipCode.test(input.toString())
+  input && RegexZipCode.test(input.toString())
 
 const formatZipCode = (input: unknown) => {
   return Number(input.toString().replace('-', ''))
 }
+const createErrorMessage = (input: unknown) => {
+  if (!input) return '郵便番号は必須です'
+  return `郵便番号の形式が不正です。 : ${input}`
+}
 export const ZipCodeCodec = new t.Type<ZipCode, string, unknown>(
-  // a unique name for this codec
+  // 型名。codecで一意にする必要がある。
   'ZipCode',
-  // a custom type guard
+  // タイプガード
   isZipCode,
-  // succeeds if a value of type I can be decoded to a value of type A
-  // `t.success` and `t.failure` are helpers used to build `Either` instances
+  // タイプガードに成功したら、デコードできたものとする。失敗したら、failureの第三引数にエラーメッセージを設定
   (input, context) =>
     isZipCode(input)
       ? t.success(formatZipCode(input))
-      : t.failure(input, context, `郵便番号の形式が不正です。 : ${input}`),
-  // converts a value of type A to a value of type O
-  // `A` and `O` are the same, so `encode` is just the identity function
+      : t.failure(input, context, createErrorMessage(input)),
+  // エンコードするときの変換関数。t.Type<A, O, I>で、AをOに変換する関数を書く。今回はA=ZipCode, O=string
   (a: ZipCode) => {
     const [, first, last] = RegexZipCode.exec(a.toString())
     return `${first}-${last}`
