@@ -30,7 +30,7 @@ describe('郵便番号チェック', () => {
   test('郵便番号が不正な場合にエラーメッセージを取得できること', () => {
     const x = ZipCodeCodec.decode(JSON.parse(`"000--0000"`))
     expect(PathReporter.report(x)).toStrictEqual([
-      'Invalid value "000--0000" supplied to : ZipCode',
+      '郵便番号の形式が不正です。 : 000--0000',
     ])
   })
 })

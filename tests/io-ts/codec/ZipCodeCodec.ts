@@ -22,7 +22,7 @@ export const ZipCodeCodec = new t.Type<ZipCode, string, unknown>(
   (input, context) =>
     isZipCode(input)
       ? t.success(formatZipCode(input))
-      : t.failure(input, context),
+      : t.failure(input, context, `郵便番号の形式が不正です。 : ${input}`),
   // converts a value of type A to a value of type O
   // `A` and `O` are the same, so `encode` is just the identity function
   t.identity,
