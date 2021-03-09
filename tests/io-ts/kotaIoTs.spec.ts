@@ -1,9 +1,12 @@
 import { isRight, map, right } from 'fp-ts/lib/Either'
 import { PathReporter } from 'io-ts/PathReporter'
+import { parseISO } from 'date-fns'
 import { ZipCodeCodec } from './codec/ZipCodeCodec'
 import { PhoneNumberCodec } from './codec/PhoneNumberCodec'
 import { getErrors, UserDetailCodec } from './codec/UserDetailCodec'
 import { UserNameKanaCodec } from './codec/UserNameKanaCodec'
+import { UtcDateFromStringCodec } from './codec/UtcDateFromStringCodec'
+
 describe('郵便番号チェック', () => {
   test('郵便番号が正しい場合 ハイフンあり', () => {
     const x = ZipCodeCodec.decode(JSON.parse(`"509-0000"`))
@@ -167,6 +170,15 @@ describe('ユーザ詳細チェック', () => {
     const x = UserDetailCodec.decode(userDetailJsonInput)
     expect(x).toStrictEqual(right(userDetailJsonExpected))
   })
+  test('ユーザ詳細が正しい場合 カナあり', () => {
+    const x = UserDetailCodec.decode({
+      ...userDetailJsonInput,
+      userNameKana: 'テスト',
+    })
+    expect(x).toStrictEqual(
+      right({ ...userDetailJsonExpected, userNameKana: 'テスト' }),
+    )
+  })
   test('エンコードできること', () => {
     const x = UserDetailCodec.decode(userDetailJsonInput)
     if (isRight(x)) {
@@ -196,6 +208,33 @@ describe('ユーザ詳細チェック', () => {
       'zipcode: 郵便番号は必須です',
       'phoneNumber: 電話番号の形式が不正です。 : b',
       'userName: 文字列を入力してください',
+    ])
+  })
+})
+
+describe('日時チェック', () => {
+  test('日時が正しい場合', () => {
+    const x = UtcDateFromStringCodec.decode(JSON.parse(`"2000-01-01T00:00:00"`))
+    expect(x).toStrictEqual(right(parseISO('2000-01-01T00:00:00')))
+  })
+  test('エンコードできること', () => {
+    const x = UtcDateFromStringCodec.decode(JSON.parse(`"2000-01-01T00:00:00"`))
+    if (isRight(x)) {
+      expect(UtcDateFromStringCodec.encode(x.right)).toStrictEqual(
+        '2000-01-01T00:00:00',
+      )
+    } else {
+      expect(false).toBeTruthy()
+    }
+  })
+  test('日時が不正な場合に失敗すること', () => {
+    const x = UtcDateFromStringCodec.decode(JSON.parse(`"000--0000"`))
+    expect(isRight(x)).toBeFalsy()
+  })
+  test('日時が不正な場合にエラーメッセージを取得できること', () => {
+    const x = UtcDateFromStringCodec.decode(JSON.parse(`"000--0000"`))
+    expect(PathReporter.report(x)).toStrictEqual([
+      '時刻を入力してください : 000--0000',
     ])
   })
 })

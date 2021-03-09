@@ -4,7 +4,7 @@ import { fold } from 'fp-ts/Either'
 import { ZipCodeCodec } from './ZipCodeCodec'
 import { PhoneNumberCodec } from './PhoneNumberCodec'
 import { UserNameKanaCodec } from './UserNameKanaCodec'
-import { UserNameCodec } from './UserName'
+import { UserNameCodec } from './UserNameCodec'
 export const UserDetailCodec = t.type({
   zipcode: ZipCodeCodec,
   phoneNumber: PhoneNumberCodec,
