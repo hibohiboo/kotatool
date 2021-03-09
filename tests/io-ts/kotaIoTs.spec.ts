@@ -82,50 +82,6 @@ describe('電話番号チェック', () => {
   })
 })
 
-const userDetailJsonInput = {
-  zipcode: '509-0000',
-  phoneNumber: '09000000000',
-}
-const userDetailJsonExpected = {
-  zipcode: 5090000,
-  phoneNumber: '090-0000-0000',
-}
-
-describe('ユーザ詳細チェック', () => {
-  test('ユーザ詳細が正しい場合', () => {
-    const x = UserDetailCodec.decode(userDetailJsonInput)
-    expect(x).toStrictEqual(right(userDetailJsonExpected))
-  })
-  test('エンコードできること', () => {
-    const x = UserDetailCodec.decode(userDetailJsonInput)
-    if (x._tag === 'Right') {
-      expect(UserDetailCodec.encode(x.right)).toStrictEqual({
-        phoneNumber: '090-0000-0000',
-        zipcode: '509-0000',
-      })
-    } else {
-      expect(false).toBeTruthy()
-    }
-  })
-  test('ユーザ詳細が不正な場合に失敗すること', () => {
-    const x = UserDetailCodec.decode({
-      zipcode: '',
-      phoneNumber: '',
-    })
-    expect(isRight(x)).toBeFalsy()
-  })
-  test('ユーザ詳細が不正な場合にエラーメッセージを取得できること', () => {
-    const x = UserDetailCodec.decode({
-      zipcode: '',
-      phoneNumber: 'b',
-    })
-    expect(getErrors(x)).toStrictEqual([
-      'zipcode: 郵便番号は必須です',
-      'phoneNumber: 電話番号の形式が不正です。 : b',
-    ])
-  })
-})
-
 describe('名前（カナ）チェック', () => {
   test('名前（カナ）が正しい場合', () => {
     const x = UserNameKanaCodec.decode(JSON.parse(`"ア"`))
@@ -192,6 +148,54 @@ describe('名前（カナ）チェック', () => {
     const x = UserNameKanaCodec.decode(JSON.parse(`"ｶﾅ"`))
     expect(PathReporter.report(x)).toStrictEqual([
       '全角カタカナで入力してください',
+    ])
+  })
+})
+const userDetailJsonInput = {
+  zipcode: '509-0000',
+  phoneNumber: '09000000000',
+  userName: 'テスト',
+}
+const userDetailJsonExpected = {
+  zipcode: 5090000,
+  phoneNumber: '090-0000-0000',
+  userName: 'テスト',
+  userNameKana: undefined,
+}
+describe('ユーザ詳細チェック', () => {
+  test('ユーザ詳細が正しい場合', () => {
+    const x = UserDetailCodec.decode(userDetailJsonInput)
+    expect(x).toStrictEqual(right(userDetailJsonExpected))
+  })
+  test('エンコードできること', () => {
+    const x = UserDetailCodec.decode(userDetailJsonInput)
+    if (isRight(x)) {
+      expect(UserDetailCodec.encode(x.right)).toStrictEqual({
+        phoneNumber: '090-0000-0000',
+        zipcode: '509-0000',
+        userName: 'テスト',
+        userNameKana: undefined,
+      })
+    } else {
+      expect(false).toBeTruthy()
+    }
+  })
+  test('ユーザ詳細が不正な場合に失敗すること', () => {
+    const x = UserDetailCodec.decode({
+      zipcode: '',
+      phoneNumber: '',
+    })
+    expect(isRight(x)).toBeFalsy()
+  })
+  test('ユーザ詳細が不正な場合にエラーメッセージを取得できること', () => {
+    const x = UserDetailCodec.decode({
+      zipcode: '',
+      phoneNumber: 'b',
+    })
+    expect(getErrors(x)).toStrictEqual([
+      'zipcode: 郵便番号は必須です',
+      'phoneNumber: 電話番号の形式が不正です。 : b',
+      'userName: 文字列を入力してください',
     ])
   })
 })
