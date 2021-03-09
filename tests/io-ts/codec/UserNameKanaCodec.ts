@@ -40,12 +40,21 @@ const validate = (input: unknown): Either<string, string> => {
   return i4
 }
 
+// validateと同じことを行う関数
+const validate2 = (input: unknown) =>
+  pipe(
+    checkString(input),
+    (output) => either.chain(output, checkRequired),
+    (output) => either.chain(output, (o) => checkMaxLength(o, 5)),
+    (output) => either.chain(output, checkKana),
+  )
+
 export const UserNameKanaCodec = new t.Type<UserNameKana, string, unknown>(
   'UserNameKana',
   (i): i is UserNameKana => isRight(validate(i)),
   (input, context) =>
     pipe(
-      validate(input),
+      validate2(input),
       fold((e) => t.failure(input, context, e), t.success),
     ),
   t.identity,
