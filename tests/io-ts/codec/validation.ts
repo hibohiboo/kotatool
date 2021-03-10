@@ -1,5 +1,6 @@
 import * as t from 'io-ts'
 import { either, left, right, Either, fold, isRight } from 'fp-ts/Either'
+import { pipe } from 'fp-ts/function'
 type Error = string
 export const checkString = (i: unknown): Either<Error, string> => {
   const isString = (i: unknown): i is string => typeof i === 'string'
@@ -31,3 +32,14 @@ export const checkKana = (i: string): Either<Error, string> => {
 
 export const requiredString = (i: unknown) =>
   either.chain(checkString(i), checkRequired)
+export const joinErrors = (errors) =>
+  errors.map(
+    (error) =>
+      `${error.context.map(({ key }) => key).join('')}: ${error.message}`,
+  )
+export const getErrors = <A>(v: t.Validation<A>): Array<string> => {
+  return pipe(
+    v,
+    fold(joinErrors, () => ['no errors']),
+  )
+}

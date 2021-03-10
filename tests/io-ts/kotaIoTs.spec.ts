@@ -1,11 +1,14 @@
-import { isRight, map, right } from 'fp-ts/lib/Either'
+import { isRight, map, right, left } from 'fp-ts/lib/Either'
 import { PathReporter } from 'io-ts/PathReporter'
+import { isLeft } from 'fp-ts/lib/These'
 import { parseISO } from 'date-fns'
+import { UsersFormCodec } from './codec/UsersFormCodec'
 import { ZipCodeCodec } from './codec/ZipCodeCodec'
 import { PhoneNumberCodec } from './codec/PhoneNumberCodec'
-import { getErrors, UserDetailCodec } from './codec/UserDetailCodec'
+import { UserDetailCodec } from './codec/UserDetailCodec'
 import { UserNameKanaCodec } from './codec/UserNameKanaCodec'
 import { UtcDateFromStringCodec } from './codec/UtcDateFromStringCodec'
+import { getErrors } from './codec/validation'
 
 describe('郵便番号チェック', () => {
   test('郵便番号が正しい場合 ハイフンあり', () => {
@@ -165,16 +168,21 @@ const userDetailJsonExpected = {
   userName: 'テスト',
   userNameKana: undefined,
 }
+const userDetailJsonInputKana = {
+  ...userDetailJsonInput,
+  userNameKana: 'テスト',
+}
+const userDetailJsonExpectedKana = {
+  ...userDetailJsonExpected,
+  userNameKana: 'テスト',
+}
 describe('ユーザ詳細チェック', () => {
   test('ユーザ詳細が正しい場合', () => {
     const x = UserDetailCodec.decode(userDetailJsonInput)
     expect(x).toStrictEqual(right(userDetailJsonExpected))
   })
   test('ユーザ詳細が正しい場合 カナあり', () => {
-    const x = UserDetailCodec.decode({
-      ...userDetailJsonInput,
-      userNameKana: 'テスト',
-    })
+    const x = UserDetailCodec.decode(userDetailJsonInputKana)
     expect(x).toStrictEqual(
       right({ ...userDetailJsonExpected, userNameKana: 'テスト' }),
     )
@@ -235,6 +243,30 @@ describe('日時チェック', () => {
     const x = UtcDateFromStringCodec.decode(JSON.parse(`"000--0000"`))
     expect(PathReporter.report(x)).toStrictEqual([
       '時刻を入力してください : 000--0000',
+    ])
+  })
+})
+
+describe('ユーザ詳細チェック', () => {
+  test('ユーザ詳細が正しい場合', () => {
+    const x = UsersFormCodec.decode({
+      error: '',
+      userDetail: [userDetailJsonInputKana],
+    })
+    expect(x).toStrictEqual(
+      right({
+        error: '',
+        userDetail: [userDetailJsonExpectedKana],
+      }),
+    )
+  })
+  test('ユーザ詳細が不正な場合', () => {
+    const x = UsersFormCodec.decode({
+      error: '',
+      userDetail: [{ ...userDetailJsonInputKana, userName: '' }],
+    })
+    expect(PathReporter.report(x)).toStrictEqual([
+      'userDetail0userName: 必須項目です',
     ])
   })
 })
