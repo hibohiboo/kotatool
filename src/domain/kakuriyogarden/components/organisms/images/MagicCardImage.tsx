@@ -55,7 +55,9 @@ const ImageArea: React.FC<{ magic: Magic; id: string }> = ({ magic, id }) => {
     }
   }, [])
   const canvasRef = useCallback((node) => {
-    node.getCanvas()._canvas.id = id
+    if (node) {
+      node.getCanvas()._canvas.id = id
+    }
   }, [])
 
   const cellSize = 50
@@ -63,10 +65,10 @@ const ImageArea: React.FC<{ magic: Magic; id: string }> = ({ magic, id }) => {
 
   // 効果の文字サイズ調整
   let effectStyle = { fontSize: fontSize }
-  if (magic.effect.length > 35) {
+  if (magic.effect?.length > 35) {
     effectStyle = { fontSize: fontSize * 0.85 }
   }
-  if (magic.effect.length > 50) {
+  if (magic.effect?.length > 50) {
     effectStyle = { fontSize: fontSize * 0.75 }
   }
   return (
