@@ -5,10 +5,8 @@ import React, {
   useLayoutEffect,
   useCallback,
 } from 'react'
-import { useEntrySheet } from '~/store/modules/trpgManualModule'
-import { Stage, Layer, Rect, Text, Ellipse, Group } from 'react-konva'
-import { Gemory } from '~/domain/kakuriyogarden/classes/gemory'
-import { getHopeImageUrl, Hope } from '~/domain/kakuriyogarden/classes/hope'
+import { Stage, Layer, Rect, Text, Group } from 'react-konva'
+import { getHopeImageUrl } from '~/domain/kakuriyogarden/classes/hope'
 import OutLine from './card/outline'
 import URLImage from '~/domain/kakuriyogarden/components/atoms/konva/URLImage'
 import CellImage from '~/domain/kakuriyogarden/components/organisms/character/Garden/atoms/CellImage'

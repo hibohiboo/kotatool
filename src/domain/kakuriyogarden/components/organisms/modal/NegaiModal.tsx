@@ -1,6 +1,5 @@
-import { FC, Component, useEffect, useState } from 'react'
+import { FC } from 'react'
 import Slider from 'react-slick'
-import { TextareaAutosize } from '@material-ui/core'
 import Modal from '~/domain/kakuriyogarden/components/molecules/modal/Modal'
 import Card from '~/domain/kakuriyogarden/components/organisms/card'
 

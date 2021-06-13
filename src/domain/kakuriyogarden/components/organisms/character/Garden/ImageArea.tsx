@@ -1,8 +1,5 @@
 import React, { useState, useRef, useEffect, Dispatch } from 'react'
-import { useEntrySheet } from '~/store/modules/trpgManualModule'
-import { Stage, Layer, Rect, Text, Ellipse } from 'react-konva'
-import URLImage from './atoms/CellImage'
-import Hidden from '@material-ui/core/Hidden'
+import { Stage, Layer, Rect } from 'react-konva'
 import Cell from './atoms/GardenCell'
 import { Gemory } from '~/domain/kakuriyogarden/classes/gemory'
 import { getHopeImageUrl, Hope } from '~/domain/kakuriyogarden/classes/hope'
@@ -17,15 +14,6 @@ const ImageArea: React.FC<{
   const cellCount = Math.max(...gardenItems.map((i) => i.cards.length))
   const canvasWidth = 2 + cellCount * size
   const canvasHight = 2 + size * (gardenItems.length + 1)
-  const leftPadding = 5
-  const inputWidth = canvasWidth - leftPadding
-  const family = {
-    gothic:
-      '"Hiragino Sans W3", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif',
-    serif:
-      '"游明朝", YuMincho, "Hiragino Mincho ProN W3", "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HG明朝E", "ＭＳ Ｐ明朝", "ＭＳ 明朝", serif',
-    fontawesome: '"Font Awesome 5 Free", "Font Awesome 5 Brands"',
-  }
 
   const [url, setUrl] = useState('')
   const stageRef = useRef(null)
@@ -43,18 +31,6 @@ const ImageArea: React.FC<{
     }
   }
   useEffect(effect)
-
-  const Circle: React.FC<{ x: number; y: number }> = ({ x, y }) => (
-    <Ellipse
-      x={x}
-      y={y}
-      radiusX={40}
-      radiusY={20}
-      stroke={'#fff'}
-      strokeWidth={5}
-    />
-  )
-  const cellSize = 50
 
   return (
     <>

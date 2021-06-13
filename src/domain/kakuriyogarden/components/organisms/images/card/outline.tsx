@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Stage, Layer, Rect, Text, Ellipse } from 'react-konva'
+import { Rect } from 'react-konva'
 const ImageArea: FC<{ width: number; height: number }> = ({
   width,
   height,

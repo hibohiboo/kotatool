@@ -1,13 +1,7 @@
-import { FC, Component, useEffect, useState } from 'react'
-import Slider from 'react-slick'
-import { TextareaAutosize } from '@material-ui/core'
+import { FC } from 'react'
 import Modal from '~/domain/kakuriyogarden/components/molecules/modal/Modal'
-import Card from '~/domain/kakuriyogarden/components/organisms/card'
 
-import type {
-  GadgetModal,
-  GemoryTypeModal,
-} from '~/domain/kakuriyogarden/store/character/modal'
+import type { GemoryTypeModal } from '~/domain/kakuriyogarden/store/character/modal'
 
 import { getGemoryImage } from '~/domain/kakuriyogarden/classes/gemory'
 

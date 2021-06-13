@@ -1,15 +1,9 @@
 import { Dispatch, FC, useEffect, useState } from 'react'
-import { getGadgetImageUrl } from '~/domain/kakuriyogarden/classes/gadget'
-import { Gemory, getGemoryImage } from '~/domain/kakuriyogarden/classes/gemory'
-import {
-  Magic,
-  gemory,
-  formatMagic,
-} from '~/domain/kakuriyogarden/classes/gemory/magic'
+import { getGemoryImage } from '~/domain/kakuriyogarden/classes/gemory'
+import { Magic, gemory } from '~/domain/kakuriyogarden/classes/gemory/magic'
 import {
   getHopeImageUrl,
   getHopeMagic,
-  Hope,
 } from '~/domain/kakuriyogarden/classes/hope'
 import { Character } from '~/domain/kakuriyogarden/store/character'
 import {
@@ -20,7 +14,6 @@ import {
   OpenInputModal,
 } from '~/domain/kakuriyogarden/store/character/modal'
 import ImageArea from './ImageArea'
-import Card from '~/domain/kakuriyogarden/components/organisms/card'
 import { createZip } from '~/domain/kakuriyogarden/store/character/udonEvent'
 
 const component: FC<{

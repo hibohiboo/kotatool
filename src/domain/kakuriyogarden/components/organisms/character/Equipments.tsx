@@ -1,5 +1,4 @@
 import { Dispatch, FC } from 'react'
-import { getGadgetImageUrl } from '~/domain/kakuriyogarden/classes/gadget'
 import { OpenInputModal } from '~/domain/kakuriyogarden/store/character/modal'
 import Ruby from '~/domain/kakuriyogarden/components/atoms/RubyText'
 interface Equipment {

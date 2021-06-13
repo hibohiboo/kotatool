@@ -1,7 +1,7 @@
 import React from 'react'
 import { Rect } from 'react-konva'
 const cellSize = 50
-export default ({ x, y, color }: { x: number; y: number; color: string }) => (
+const Cell = ({ x, y, color }: { x: number; y: number; color: string }) => (
   <Rect
     x={x}
     y={y}
@@ -12,3 +12,5 @@ export default ({ x, y, color }: { x: number; y: number; color: string }) => (
     strokeWidth={2}
   />
 )
+
+export default Cell

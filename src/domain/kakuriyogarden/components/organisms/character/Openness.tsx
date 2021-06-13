@@ -1,5 +1,4 @@
 import { FC } from 'react'
-import { getGadgetImageUrl } from '~/domain/kakuriyogarden/classes/gadget'
 import { OpenInputModal } from '~/domain/kakuriyogarden/store/character/modal'
 import { Character } from '~/domain/kakuriyogarden/store/character'
 const component: FC<{

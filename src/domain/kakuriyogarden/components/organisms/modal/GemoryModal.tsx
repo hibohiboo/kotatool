@@ -1,4 +1,4 @@
-import { FC, Component, useEffect, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { getGemoryImage } from '~/domain/kakuriyogarden/classes/gemory'
 import Modal from '~/domain/kakuriyogarden/components/molecules/modal/Modal'
 import type { GemoryModal } from '~/domain/kakuriyogarden/store/character/modal'
