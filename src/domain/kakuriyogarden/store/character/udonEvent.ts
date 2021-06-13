@@ -11,14 +11,33 @@ import {
 import { Magic } from '../../classes/gemory/magic'
 import { Character, Garden } from '.'
 import { getHopeMagic } from '../../classes/hope'
-import { DATE_FORMAT } from '~/lib/constants'
+import { DATETIME_FILE_FORMAT } from '~/lib/constants'
 
 const getCanvasBlob = (canvas: HTMLCanvasElement): Promise<Blob> =>
   new Promise((resolve, reject) => canvas.toBlob((blob) => resolve(blob)))
 
-// TODO: 一旦あきらめ。画像化素直にしたほうがはやいかも。
-
 export const createZip = async (character: Character) => {
+  const files = await createCardStacks(character)
+
+  // 地形 - 庭園
+  const terrainBlob = await getCanvasBlob(
+    document.getElementById(`terrain-garden`) as HTMLCanvasElement,
+  )
+  const terrainIdentifier = await calcSHA256Async(terrainBlob)
+  files.push(
+    new File(
+      [terrainBlob],
+      terrainIdentifier + '.' + MimeType.extension(terrainBlob.type),
+      {
+        type: terrainBlob.type,
+      },
+    ),
+  )
+  files.push(createGardenTerrainStack(terrainIdentifier, character.garden))
+  FileArchiver.instance.save(files, format(new Date(), DATETIME_FILE_FORMAT))
+}
+
+const createCardStacks = async (character: Character) => {
   const { garden, magicalName } = character
   const files: File[] = []
 
@@ -86,8 +105,7 @@ export const createZip = async (character: Character) => {
       { ...getHopeMagic(character.hope), identifier: hopeIdentifier },
     ]),
   )
-
-  FileArchiver.instance.save(files, format(new Date(), DATE_FORMAT))
+  return files
 }
 
 type MagicWithIdentifer = Magic & { identifier: string }
@@ -202,4 +220,86 @@ const createCard = (
   cardData.appendChild(detail)
   cardWrapper.appendChild(cardData)
   return cardWrapper
+}
+
+const createGardenTerrainStack = (
+  terrainIdentifier: string,
+  garden: Garden,
+) => {
+  const doc = createDoc()
+  const terrainWrapper = createElement(doc, 'terrain', [
+    ['location.name', 'table'],
+    ['location.x', '50'],
+    ['location.y', '500'],
+    ['posZ', '0'],
+    ['rotate', '0'],
+    ['mode', '3'],
+    ['isLocked', 'false'],
+  ])
+
+  terrainWrapper.appendChild(createTerrain(doc, terrainIdentifier, garden))
+  doc.appendChild(terrainWrapper)
+  const sXML = convertDocToXML(doc)
+  return new File([sXML], `${'心象庭園'}.xml`, { type: 'text/plain' })
+}
+const createTerrain = (
+  doc: Document,
+  terrainIdentifier: string,
+  garden: Garden,
+) => {
+  const terrainData = createElement(doc, 'data', [['name', 'terrain']])
+  const image = createElement(doc, 'data', [['name', 'image']])
+  const imageIdentifier = createElement(doc, 'data', [
+    ['name', 'imageIdentifier'],
+    ['type', 'image'],
+  ])
+  const wall = createElement(
+    doc,
+    'data',
+    [
+      ['name', 'wall'],
+      ['type', 'image'],
+    ],
+    './assets/images/tex.jpg',
+  )
+  const floor = createElement(
+    doc,
+    'data',
+    [
+      ['name', 'floor'],
+      ['type', 'image'],
+    ],
+    terrainIdentifier,
+  )
+  image.appendChild(imageIdentifier)
+  image.appendChild(wall)
+  image.appendChild(floor)
+  const common = createElement(doc, 'data', [['name', 'common']])
+  const detail = createElement(doc, 'data', [['name', 'detail']])
+  const name = createElement(doc, 'data', [['name', 'name']], '心象庭園')
+  const height = createElement(doc, 'data', [['name', 'height']], '0')
+  const width = createElement(
+    doc,
+    'data',
+    [['name', 'width']],
+    `${garden
+      .map((g) => g.cards.length)
+      .reduce((max, cur) => Math.max(max, cur), 0)}`,
+  )
+  const depth = createElement(
+    doc,
+    'data',
+    [['name', 'depth']],
+    `${garden.length + 1}`,
+  )
+  image.appendChild(imageIdentifier)
+  common.appendChild(name)
+  common.appendChild(height)
+  common.appendChild(width)
+  common.appendChild(depth)
+  terrainData.appendChild(image)
+  terrainData.appendChild(common)
+  terrainData.appendChild(detail)
+
+  return terrainData
 }
