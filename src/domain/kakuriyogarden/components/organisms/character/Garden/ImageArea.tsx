@@ -1,4 +1,10 @@
-import React, { useState, useRef, useEffect, Dispatch } from 'react'
+import React, {
+  useState,
+  useRef,
+  useEffect,
+  Dispatch,
+  useCallback,
+} from 'react'
 import { Stage, Layer, Rect } from 'react-konva'
 import Cell from './atoms/GardenCell'
 import { Gemory } from '~/domain/kakuriyogarden/classes/gemory'
@@ -31,13 +37,15 @@ const ImageArea: React.FC<{
     }
   }
   useEffect(effect)
-
+  const canvasRef = useCallback((node) => {
+    if (node) node.getCanvas()._canvas.id = 'terrain-garden'
+  }, [])
   return (
     <>
       <img className="sample-image" src={url} style={{ width: '100%' }}></img>
       <div style={{ display: 'none' }}>
         <Stage width={canvasWidth} height={canvasHight} ref={stageRef}>
-          <Layer>
+          <Layer ref={canvasRef}>
             <Rect
               x={0}
               y={0}
