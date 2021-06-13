@@ -1,11 +1,11 @@
-FROM node:15.10.0
+FROM node:16.3.0
 
 # コンテナ上の作業ディレクトリ作成
 WORKDIR /app
 
 # 後で確認出来るようにpackage.jsonを作成
 COPY .npmrc /app/.npmrc
-RUN npm install -g npm@7.6.0
+RUN npm install -g npm@7.17.0
 RUN npm init -y
 RUN npm i --no-optional next react react-dom
 
@@ -67,3 +67,20 @@ RUN npm i -D classnames
 # cssフレームワーク
 RUN npm i -D bootstrap@next
 RUN npm i -D stylelint-config-standard stylelint-config-recess-order
+RUN npm i io-ts fp-ts
+
+# test
+RUN npm i -D jest ts-jest @types/jest
+
+# img
+RUN npm i react-dropzone
+## canvas library
+RUN npm i --no-optional react-konva  konva@7 --save
+RUN npm i @material-ui/core
+# udonarium
+RUN npm i crypto-js
+# フリック処理
+RUN npm i react-slick
+
+# file archver
+RUN npm i file-saver jszip

@@ -1,0 +1,13 @@
+.kg- {
+  &editable {
+    cursor: pointer;
+    &:after {
+      // https://fontawesome.com/icons/edit
+      content: '\f044';
+      font-family: 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
+      font-size: 5px;
+      padding-right: 10px;
+      padding-left: 5px;
+    }
+  }
+}

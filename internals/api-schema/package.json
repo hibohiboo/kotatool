@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "redoc": "npm run build && redoc-cli bundle ./openapi.json --options.menuToggle --options.pathInMiddlePanel  -o ./dist/index.html",
-    "build": "swagger-cli bundle -r ./openapi.yml -o ./openapi.json",
+    "redoc": "npm run build && redoc-cli bundle ./openapi.json --options.menuToggle --options.pathInMiddlePanel  -o ./dist/index.html", 
+    "build": "swagger-cli bundle -r ./openapi.yml -o ./openapi.json", 
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

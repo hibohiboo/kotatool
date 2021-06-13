@@ -1,8 +1,9 @@
-Schema:
+AccessNumber:
   type: object
   properties:
     accessNumber:
       description: アクセスカウント
-      type: int
-      default: ""
+      type: number
       format: int64
+  required:
+    - accessNumber
