@@ -1,0 +1,66 @@
+@import './edit/index.scss';
+@import './edit/decoration.scss';
+@import './edit/components.scss';
+.kg-wrapper {
+  @extend .yu-font;
+  min-height: 100vh;
+  color: $fontColor;
+  background-color: $mainColor;
+  position: relative;
+  line-height: 1.8;
+
+  b,
+  strong,
+  .bold {
+    @extend .bold;
+  }
+  .kg- {
+    // レイアウト・ヘッダ部分
+    &header {
+      @extend .flex-centering;
+
+      overflow: hidden;
+      height: 20px;
+      background-color: $headerColor;
+      font-size: 0.75rem;
+    }
+    &main {
+      background-color: $mainColor;
+      display: flex;
+    }
+
+    &subpage {
+      // レイアウト
+      margin: 0 auto;
+
+      // 要素
+      width: $mainContentWidth;
+      min-height: 100%;
+      padding: 10px;
+      &.kg-cloth {
+        background-color: #911;
+      }
+      &.kg-girl {
+        background-color: #191;
+      }
+      &.kg-preview {
+        background-color: #119;
+      }
+      &.kg-garden {
+        background-color: #991;
+      }
+    }
+
+    &footer {
+      @extend .flex-centering;
+
+      overflow: hidden;
+      height: 100px;
+      width: 100%;
+      background-color: $footerColor;
+      position: absolute;
+      bottom: 0;
+      display: none;
+    }
+  }
+}

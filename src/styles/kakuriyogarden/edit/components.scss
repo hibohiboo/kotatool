@@ -1,0 +1,89 @@
+.kg- {
+  &overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+
+    @extend .flex-centering;
+    display: none;
+
+    &.active {
+      display: flex;
+    }
+  }
+  &modal-content {
+    padding: 1rem;
+    border: solid #fff 2px;
+    background-color: $mainColor;
+
+    .kg-button-wrapper {
+      margin: 1rem;
+
+      button {
+        font-size: 1.1rem;
+      }
+    }
+  }
+  &input-modal {
+    input {
+      padding: 10px 15px;
+      font-size: 1.15rem;
+      border-radius: 3px;
+      box-sizing: border-box;
+    }
+    textarea {
+      min-width: 290px;
+      padding: 5px 10px;
+    }
+  }
+  &negai-modal {
+    $padSize: 20px;
+    width: $mainContentWidth - $padSize * 2;
+    padding: $padSize;
+
+    .kg-modal-hope {
+      img {
+        width: $iconWidth;
+        height: $iconHeight;
+      }
+      &-skill {
+        padding-bottom: 30px;
+      }
+    }
+
+    .slick-dots li {
+      width: 25px;
+      height: 25px;
+      box-sizing: border-box;
+    }
+    .slick-dots li:nth-child(1) button {
+      background: url('/images/kakuriyogarden/icons/game-icons/heart-wings.svg');
+      background-size: contain;
+    }
+    .slick-dots li:nth-child(2) button {
+      background: url('/images/kakuriyogarden/icons/game-icons/rainbow-star.svg');
+      background-size: contain;
+    }
+    .slick-dots li:nth-child(3) button {
+      background: url('/images/kakuriyogarden/icons/game-icons/spark-spirit.png');
+      background-size: contain;
+    }
+    .slick-dots li button:before {
+      content: '';
+    }
+    .slick-dots li.slick-active {
+      border: 2px solid #fff;
+    }
+  }
+  &gadget-modal {
+    overflow: auto;
+    max-height: 80vh;
+    img {
+      width: $iconWidth;
+      height: $iconHeight;
+    }
+  }
+}
