@@ -1,0 +1,138 @@
+@use "sass:math";
+.kg- {
+  &magical-name {
+    // レイアウト
+    display: flex;
+
+    // 要素
+    font-size: 1.25rem;
+  }
+  &magical-name-kana {
+    font-size: 0.8rem;
+    margin-left: -5px;
+  }
+  &magicalgirl {
+    font-size: 0.9rem;
+    align-self: flex-end;
+    padding-right: 5px;
+  }
+  &detail-area {
+    border: solid $fontColor 1px;
+    padding: 10px 5px;
+    white-space: pre-wrap;
+    background-color: $mainColor;
+  }
+  &profile {
+    display: flex;
+    margin-top: 5px;
+    align-items: flex-start;
+
+    img {
+      width: $iconWidth;
+      height: $iconHeight;
+    }
+    // 画像
+    div:nth-child(1) {
+      border-left: solid $fontColor 1px;
+      border-top: solid $fontColor 1px;
+      border-bottom: solid $fontColor 1px;
+      border-right: solid $fontColor 1px;
+    }
+    // 詳細
+    div:nth-child(2) {
+      min-height: 50px;
+      width: calc(100% - 50px);
+      border: solid $fontColor 1px;
+      @extend .kg-detail-area;
+    }
+  }
+
+  // 各項目の大枠レイアウト
+  &section {
+    margin-top: 5px;
+    padding: 5px;
+    border: solid 1px #fff;
+    display: flex;
+    position: relative;
+
+    img {
+      width: $iconWidth;
+      height: $iconHeight;
+    }
+
+    &-title {
+      padding: 5px;
+      font-weight: bold;
+      font-size: 1.15rem;
+    }
+  }
+
+  // アトリビュート
+  &attributes {
+    padding-left: 5px;
+  }
+  &attribute {
+    padding-top: 10px;
+    border-top: dashed 1px #fff;
+    border-bottom: dashed 1px #fff;
+    background-color: $mainColor;
+    div {
+      padding: 5px;
+    }
+    div:nth-child(1) {
+      font-size: 1.2rem;
+      width: fit-content;
+    }
+    div:nth-child(2) {
+      white-space: pre-wrap;
+    }
+  }
+
+  // 逸脱
+  &table {
+    th {
+      border-bottom: solid #fff 2px;
+    }
+
+    td {
+      padding-left: 3px;
+      border-bottom: dashed #fff 1px;
+      padding-top: 10px;
+      padding-bottom: 15px;
+    }
+  }
+
+  // 心象庭園
+  &garden {
+    width: 230px;
+    overflow: auto;
+    &-layer {
+      display: flex;
+      &:nth-child(n + 2) {
+        margin-top: -1px; // 線を重ねる
+      }
+
+      &-first {
+        flex: 0 0 auto;
+        width: $iconWidth;
+        height: $iconHeight;
+        font-size: 1rem;
+        color: #aaa;
+      }
+
+      &-col {
+        margin-left: -1px; // 線を重ねる
+        flex: 0 0 auto;
+        border: white solid 1px;
+        width: $iconWidth;
+        height: $iconHeight;
+        @extend .flex-centering;
+
+        img {
+          width: math.div($iconWidth * 2, 5);
+          height: math.div($iconHeight * 2, 5);
+        }
+      }
+    }
+  }
+}

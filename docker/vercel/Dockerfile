@@ -71,3 +71,16 @@ RUN npm i io-ts fp-ts
 
 # test
 RUN npm i -D jest ts-jest @types/jest
+
+# img
+RUN npm i react-dropzone
+## canvas library
+RUN npm i --no-optional react-konva  konva@7 --save
+RUN npm i @material-ui/core
+# udonarium
+RUN npm i crypto-js
+# フリック処理
+RUN npm i react-slick
+
+# file archver
+RUN npm i file-saver jszip
