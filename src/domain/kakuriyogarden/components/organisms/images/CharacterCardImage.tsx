@@ -77,7 +77,7 @@ const ImageArea: React.FC<{ character: Character; gardenUrl: string }> = ({
   const cellSize = 50
 
   const canvasRef = useCallback((node) => {
-    node.getCanvas()._canvas.id = 'card-character'
+    if (node) node.getCanvas()._canvas.id = 'card-character'
   }, [])
 
   return (

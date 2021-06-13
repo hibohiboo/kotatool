@@ -30,10 +30,10 @@ const Card: FC<{ cardData: Card | null }> = ({ cardData }) => {
     return <div></div>
   }
   let effectStyle = {}
-  if (cardData.effect.length > 35) {
+  if (cardData.effect?.length > 35) {
     effectStyle = { fontSize: '12px' }
   }
-  if (cardData.effect.length > 50) {
+  if (cardData.effect?.length > 50) {
     effectStyle = { fontSize: '10px' }
   }
   return (
@@ -94,6 +94,7 @@ const Card: FC<{ cardData: Card | null }> = ({ cardData }) => {
                 <a
                   href={cardData.image.sourceUrl}
                   target={'_blank'}
+                  rel="noopener noreferrer"
                 >{`illust: ${cardData.image.source}`}</a>
               </div>
             </div>

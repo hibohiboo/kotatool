@@ -82,7 +82,7 @@ const Page: NextPage<{
 // }
 
 const fetchUrl = 'https://sheets.googleapis.com/v4/spreadsheets'
-const key = process.env.GOOGLE_API_KEY
+const key = process.env.NEXT_PUBLIC_GOOGLE_API_KEY
 export const getSheetData = async (
   spreadId: string,
   sheet: string,
