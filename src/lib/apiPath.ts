@@ -1,3 +1,4 @@
-export default {
+const apiPath = {
   getServerData: '/api/getServer',
 }
+export default apiPath

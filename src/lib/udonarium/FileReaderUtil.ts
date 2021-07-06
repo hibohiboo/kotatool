@@ -17,7 +17,7 @@ export function readAsArrayBufferAsync(blob: Blob): Promise<ArrayBuffer> {
 export function readAsTextAsync(blob: Blob): Promise<string> {
   return new Promise<string>((resolve, reject) => {
     const reader = new FileReader()
-    reader.onload = (event) => {
+    reader.onload = () => {
       resolve(reader.result as string)
     }
     reader.onabort = reader.onerror = (e) => {

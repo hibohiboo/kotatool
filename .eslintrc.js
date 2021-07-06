@@ -6,6 +6,7 @@ module.exports = {
     '!.babelrc.js',
     '!.storybook/**/*.(js|ts)',
     'public',
+    'tests',
   ],
   extends: [
     'eslint:recommended',
