@@ -10,7 +10,9 @@ export type InputType = 'text' | 'textarea' | 'number'
 const inputModalBase = {
   title: '',
   value: '',
-  changeHandler: (value: string) => {},
+  changeHandler: (value: string) => {
+    console.log(value)
+  },
   show: false,
   closeHandler: () => {},
   type: 'text' as InputType,

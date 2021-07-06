@@ -79,7 +79,7 @@ export const useAuth = () => {
       auth.onAuthStateChanged((user) => {
         user ? setCurrentUser(user) : router.push(routes.home)
       }),
-    [],
+    [router],
   )
   return currentUser
 }

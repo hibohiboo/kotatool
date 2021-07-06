@@ -1,4 +1,6 @@
 import styles from './Footer.module.scss'
+import Image from 'next/image'
+
 const Footer = () => (
   <footer className={styles.kotaFooter}>
     <small className={styles.kotaCopyRight}>© 2021 hibo</small>
@@ -8,7 +10,14 @@ const Footer = () => (
       rel="noopener noreferrer"
     >
       Powered by{' '}
-      <img src="/vercel.svg" alt="Vercel Logo" className={styles.kotaLogo} />
+      <Image
+        src="/vercel.svg"
+        alt="Vercel Logo"
+        className={styles.kotaLogo}
+        width={283 / 8}
+        height={64 / 8}
+        layout="intrinsic"
+      />
     </a>
   </footer>
 )

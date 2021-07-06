@@ -1,5 +1,5 @@
 const key = 'kg-edit-chacater'
-export const saveData = (data: object) => {
+export const saveData = (data) => {
   localStorage.setItem(key, JSON.stringify(data))
 }
 export const loadData = () => {
