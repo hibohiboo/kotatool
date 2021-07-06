@@ -1,4 +1,5 @@
 module.exports = {
+  root: true,
   ignorePatterns: [
     '!next.config.js',
     '!.eslintrc.js',
@@ -12,9 +13,10 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:prettier/recommended',
+    'next',
+    'next/core-web-vitals',
     'prettier',
   ],
-  plugins: ['@typescript-eslint', 'react'],
   parser: '@typescript-eslint/parser',
   env: {
     browser: true,

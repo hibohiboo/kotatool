@@ -21,6 +21,7 @@ const component: FC<{
           <a
             href="https://scrapbox.io/magicalGirlTRPG/%E9%AD%94%E8%A3%85%E4%B8%80%E8%A6%A7"
             target="_blank"
+            rel="noreferrer"
           >
             <i
               className="far fa-question-circle"
