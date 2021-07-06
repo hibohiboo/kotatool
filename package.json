@@ -72,5 +72,11 @@
     "ts-jest": "^27.0.3",
     "typescript": "^4.3.5",
     "webpack": "^5.42.1"
-  }
+  },
+  "browserslist": [
+    ">0.3%",
+    "not ie 11",
+    "not dead",
+    "not op_mini all"
+  ]
 }
