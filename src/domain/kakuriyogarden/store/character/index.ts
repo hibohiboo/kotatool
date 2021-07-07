@@ -117,9 +117,7 @@ const useCharacterToState = (c: Character) => {
   const [symbolName, setSymbolName] = useState(c.symbolName)
   const [symbolNameKana, setSymbolNameKana] = useState(c.symbolNameKana)
   const [tags, setTags] = useState(c.tags)
-  const char: {
-    [K in Exclude<keyof Character, 'imageUrl'>]: Character[K]
-  } = {
+  const char = {
     attributes,
     color,
     deviations,
@@ -136,7 +134,7 @@ const useCharacterToState = (c: Character) => {
     symbolName,
     symbolNameKana,
     tags,
-  }
+  } as Character
   const sets: {
     [K in Exclude<keyof Character, 'imageUrl'>]: Dispatch<Character[K]>
   } = {
