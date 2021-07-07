@@ -17,7 +17,7 @@ import {
 import ImageArea from './ImageArea'
 import { createZip } from '~/domain/kakuriyogarden/store/character/udonEvent'
 
-const component: FC<{
+const Component: FC<{
   cardList: Magic[]
   character: Character
   dispatch: Record<string, Dispatch<any>>
@@ -272,4 +272,4 @@ const component: FC<{
     </>
   )
 }
-export default component
+export default Component

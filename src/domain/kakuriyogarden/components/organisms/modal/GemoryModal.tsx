@@ -5,7 +5,7 @@ import type { GemoryModal } from '~/domain/kakuriyogarden/store/character/modal'
 import Ruby from '~/domain/kakuriyogarden/components/atoms/RubyText'
 import Image from 'next/image'
 
-const modal: FC<GemoryModal> = (ctx) => {
+const GemoryModalComponent: FC<GemoryModal> = (ctx) => {
   const { gemory } = ctx
   const [description, setDescrption] = useState(gemory.description)
   const [strength, setStrength] = useState(gemory.strength)
@@ -141,4 +141,4 @@ const modal: FC<GemoryModal> = (ctx) => {
     </Modal>
   )
 }
-export default modal
+export default GemoryModalComponent

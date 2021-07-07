@@ -6,7 +6,7 @@ import type {
   InputType,
 } from '~/domain/kakuriyogarden/store/character/modal'
 
-const modal: FC<InputModal> = (ctx) => {
+const InputModalComponent: FC<InputModal> = (ctx) => {
   const [value, setValue] = useState('')
 
   // 表示するプロパティが切り替わったタイミングでinputboxをリセット
@@ -54,4 +54,4 @@ const modal: FC<InputModal> = (ctx) => {
     </Modal>
   )
 }
-export default modal
+export default InputModalComponent
