@@ -84,3 +84,4 @@ RUN npm i react-slick
 
 # file archver
 RUN npm i file-saver jszip
+RUN sed -i -e 's/"license": "MIT",/"license": "MIT", "browserslist": [">0.3%","not ie 11","not dead","not op_mini all"],/g' /app/package.json
