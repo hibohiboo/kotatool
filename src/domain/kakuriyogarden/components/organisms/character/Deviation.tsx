@@ -1,4 +1,5 @@
 import { Dispatch, FC } from 'react'
+import Image from 'next/image'
 import { OpenInputModal } from '~/domain/kakuriyogarden/store/character/modal'
 import Ruby from '~/domain/kakuriyogarden/components/atoms/RubyText'
 
@@ -18,7 +19,12 @@ const component: FC<{
         <span style={{}}>
           <ruby>逸脱</ruby>
         </span>
-        <img src="/images/kakuriyogarden/icons/game-icons/egg-eye.svg" />
+        <Image
+          src="/images/kakuriyogarden/icons/game-icons/egg-eye.svg"
+          alt="逸脱"
+          width={50}
+          height={50}
+        />
       </div>
       <div>
         <table className="kg-table">

@@ -2,7 +2,7 @@ import { FC } from 'react'
 import Slider from 'react-slick'
 import Modal from '~/domain/kakuriyogarden/components/molecules/modal/Modal'
 import Card from '~/domain/kakuriyogarden/components/organisms/card'
-
+import Image from 'next/image'
 import type { NegaiModal } from '~/domain/kakuriyogarden/store/character/modal'
 import {
   avengeMagica,
@@ -38,7 +38,13 @@ const SimpleSlider: FC<NegaiModal> = (ctx) => {
       <Slider {...settings}>
         <div className="kg-modal-hope" onClick={() => ctx.hopeHandler('献身')}>
           <h3>献身</h3>
-          <img src={getHopeImageUrl('献身')} />
+          <Image
+            src={getHopeImageUrl('献身')}
+            width={50}
+            height={50}
+            alt="献身"
+          />
+
           <p>あなたの願いは誰かのために</p>
           <div className="kg-modal-hope-skill">
             <Card cardData={dedicationMagica} />
@@ -46,7 +52,13 @@ const SimpleSlider: FC<NegaiModal> = (ctx) => {
         </div>
         <div className="kg-modal-hope" onClick={() => ctx.hopeHandler('利己')}>
           <h3>利己</h3>
-          <img src={getHopeImageUrl('利己')} />
+          <Image
+            src={getHopeImageUrl('利己')}
+            width={50}
+            height={50}
+            alt="利己"
+          />
+
           <p>あなたの願いは己のために</p>
           <div className="kg-modal-hope-skill">
             <Card cardData={egoMagica} />
@@ -55,7 +67,12 @@ const SimpleSlider: FC<NegaiModal> = (ctx) => {
 
         <div className="kg-modal-hope" onClick={() => ctx.hopeHandler('復讐')}>
           <h3>復讐</h3>
-          <img src={getHopeImageUrl('復讐')} />
+          <Image
+            src={getHopeImageUrl('復讐')}
+            width={50}
+            height={50}
+            alt="復讐"
+          />
           <p>己のための奇跡は不要。ただただ報いを願うのみ</p>
           <div className="kg-modal-hope-skill">
             <Card cardData={avengeMagica} />

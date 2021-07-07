@@ -8,24 +8,24 @@
     font-size: 1.25rem;
   }
   &magical-name-kana {
-    font-size: 0.8rem;
     margin-left: -5px;
+    font-size: 0.8rem;
   }
   &magicalgirl {
-    font-size: 0.9rem;
     align-self: flex-end;
     padding-right: 5px;
+    font-size: 0.9rem;
   }
   &detail-area {
-    border: solid $fontColor 1px;
     padding: 10px 5px;
     white-space: pre-wrap;
     background-color: $mainColor;
+    border: solid $fontColor 1px;
   }
   &profile {
     display: flex;
-    margin-top: 5px;
     align-items: flex-start;
+    margin-top: 5px;
 
     img {
       width: $iconWidth;
@@ -33,15 +33,15 @@
     }
     // 画像
     div:nth-child(1) {
-      border-left: solid $fontColor 1px;
       border-top: solid $fontColor 1px;
-      border-bottom: solid $fontColor 1px;
       border-right: solid $fontColor 1px;
+      border-bottom: solid $fontColor 1px;
+      border-left: solid $fontColor 1px;
     }
     // 詳細
     div:nth-child(2) {
-      min-height: 50px;
       width: calc(100% - 50px);
+      min-height: 50px;
       border: solid $fontColor 1px;
       @extend .kg-detail-area;
     }
@@ -49,11 +49,11 @@
 
   // 各項目の大枠レイアウト
   &section {
-    margin-top: 5px;
-    padding: 5px;
-    border: solid 1px #fff;
-    display: flex;
     position: relative;
+    display: flex;
+    padding: 5px;
+    margin-top: 5px;
+    border: solid 1px #fff;
 
     img {
       width: $iconWidth;
@@ -62,8 +62,8 @@
 
     &-title {
       padding: 5px;
-      font-weight: bold;
       font-size: 1.15rem;
+      font-weight: bold;
     }
   }
 
@@ -73,15 +73,16 @@
   }
   &attribute {
     padding-top: 10px;
+    background-color: $mainColor;
     border-top: dashed 1px #fff;
     border-bottom: dashed 1px #fff;
-    background-color: $mainColor;
+
     div {
       padding: 5px;
     }
     div:nth-child(1) {
-      font-size: 1.2rem;
       width: fit-content;
+      font-size: 1.2rem;
     }
     div:nth-child(2) {
       white-space: pre-wrap;
@@ -95,10 +96,10 @@
     }
 
     td {
-      padding-left: 3px;
-      border-bottom: dashed #fff 1px;
       padding-top: 10px;
       padding-bottom: 15px;
+      padding-left: 3px;
+      border-bottom: dashed #fff 1px;
     }
   }
 
@@ -121,11 +122,11 @@
       }
 
       &-col {
-        margin-left: -1px; // 線を重ねる
         flex: 0 0 auto;
-        border: white solid 1px;
         width: $iconWidth;
         height: $iconHeight;
+        margin-left: -1px; // 線を重ねる
+        border: white solid 1px;
         @extend .flex-centering;
 
         img {
@@ -134,5 +135,13 @@
         }
       }
     }
+  }
+
+  // ガジェットイメージ
+  &-gadge-image {
+    background-color: '#000',
+    padding-left: '5px',
+    padding-right: '5px',
+    margin-bottom: '10px',
   }
 }

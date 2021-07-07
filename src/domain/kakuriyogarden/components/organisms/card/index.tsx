@@ -1,9 +1,7 @@
 import { FC } from 'react'
 import { labelData } from '~/domain/kakuriyogarden/classes/gemory/magic'
-import {
-  OpenImageEditModal,
-  OpenInputModal,
-} from '~/domain/kakuriyogarden/store/character/modal'
+import Image from 'next/image'
+
 export type Card = {
   type: string
   kind: string
@@ -37,13 +35,19 @@ const Card: FC<{ cardData: Card | null }> = ({ cardData }) => {
     effectStyle = { fontSize: '10px' }
   }
   return (
-    <div style={{ padding: '0px', width: '252px' }} id={`card-${cardData.id}`}>
+    <div style={{ padding: '0', width: '252px' }} id={`card-${cardData.id}`}>
       <div className="skill-card">
         <div className="wrapper">
           <div className="base">
             <div className="skillLabel">{`${cardData.type}/${cardData.kind}`}</div>
             <div className="image">
-              <img src={cardData.image.url} crossOrigin="use-credentials"></img>
+              <Image
+                src={cardData.image.url}
+                alt="カード"
+                crossOrigin="use-credentials"
+                width={50}
+                height={50}
+              />
             </div>
             <div className="cardNameKana">{cardData.nameKana}</div>
             <div className="cardName">{cardData.name}</div>

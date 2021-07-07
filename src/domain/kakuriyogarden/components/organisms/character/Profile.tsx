@@ -4,6 +4,7 @@ import {
   OpenInputModal,
 } from '~/domain/kakuriyogarden/store/character/modal'
 import Ruby from '~/domain/kakuriyogarden/components/atoms/RubyText'
+import Image from 'next/image'
 
 const Profile: FC<{
   imageUrl: string
@@ -28,7 +29,7 @@ const Profile: FC<{
           openImageEditModal('キャラクターアイコン', imageUrl, handleOnDrop)
         }}
       >
-        <img src={imageUrl} />
+        <Image src={imageUrl} layout="fill" alt="キャラクターアイコン" />
       </div>
       <div
         className="kg-editable"

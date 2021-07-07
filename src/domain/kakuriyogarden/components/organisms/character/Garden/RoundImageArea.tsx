@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { Stage, Layer, Rect, Text } from 'react-konva'
+import Image from 'next/image'
 import URLImage from './atoms/CellImage'
 import TimeCell from './atoms/TimeCell'
 import Hidden from '@material-ui/core/Hidden'
@@ -28,7 +29,7 @@ const ImageArea: React.FC = () => {
   return (
     <>
       <Hidden mdUp implementation="css">
-        <img className="sample-image" src={url} style={{ width: '100%' }}></img>
+        <Image className="sample-image" src={url} layout="fill" alt="" />
       </Hidden>
       <Hidden smDown implementation="css">
         <Stage width={canvasWidth} height={canvasHight} ref={stageRef}>

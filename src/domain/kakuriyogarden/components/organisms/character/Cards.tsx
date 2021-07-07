@@ -1,4 +1,4 @@
-import { Dispatch, FC, useEffect, useState } from 'react'
+import { FC } from 'react'
 import { Character } from '~/domain/kakuriyogarden/store/character'
 import Card from '~/domain/kakuriyogarden/components/organisms/card'
 import { formatMagic } from '~/domain/kakuriyogarden/classes/gemory/magic'

@@ -1,4 +1,5 @@
 import { FC } from 'react'
+import Image from 'next/image'
 import { OpenInputModal } from '~/domain/kakuriyogarden/store/character/modal'
 import { Character } from '~/domain/kakuriyogarden/store/character'
 const component: FC<{
@@ -20,7 +21,12 @@ const component: FC<{
       <div className="kg-section-title">
         <span style={{ paddingLeft: '10px' }}>解放度</span>
         <div className="flex-centering">
-          <img src="/images/kakuriyogarden/icons/game-icons/breaking-chain.svg" />
+          <Image
+            src="/images/kakuriyogarden/icons/game-icons/breaking-chain.svg"
+            alt="解放度"
+            width={50}
+            height={50}
+          />
         </div>
       </div>
       <div>

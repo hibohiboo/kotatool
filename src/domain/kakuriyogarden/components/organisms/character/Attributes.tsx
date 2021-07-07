@@ -1,4 +1,5 @@
 import { Dispatch, FC } from 'react'
+import Image from 'next/image'
 import {
   OpenIframeModal,
   OpenInputModal,
@@ -24,15 +25,14 @@ const component: FC<{
           </ruby>
         </span>
         <div className="flex-centering">
-          <img
+          <Image
             src="/images/kakuriyogarden/icons/icooon/license.svg"
-            style={{
-              backgroundColor: '#000',
-              paddingLeft: '5px',
-              paddingRight: '5px',
-              marginBottom: '10px',
-            }}
+            alt="ガジェット"
+            width={50}
+            height={50}
+            className="kg-gadge-image"
           />
+
           <a
             href="https://scrapbox.io/magicalGirlTRPG/%E3%82%AD%E3%83%A3%E3%83%A9%E3%82%AF%E3%82%BF%E3%83%BC%E3%81%AE%E4%BD%9C%E3%82%8A%E6%96%B9_%E3%81%9D%E3%81%AE3"
             target="_blank"

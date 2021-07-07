@@ -3,10 +3,7 @@ import Wrapper from './layout/Wrapper'
 import Header from './layout/Header'
 import Footer from './layout/Footer'
 import MainArea from './layout/MainArea'
-import {
-  CharacterViewModel,
-  useCharacterViewModel,
-} from '~/domain/kakuriyogarden/store/character'
+import { CharacterViewModel } from '~/domain/kakuriyogarden/store/character'
 import InputModal from './molecules/modal/InputModal'
 import Character from './organisms/Character'
 import ImageEditModal from './molecules/modal/ImageEditModal'

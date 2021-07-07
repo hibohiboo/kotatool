@@ -12,7 +12,7 @@ const modal: FC<InputModal> = (ctx) => {
   // 表示するプロパティが切り替わったタイミングでinputboxをリセット
   useEffect(() => {
     setValue(ctx.value)
-  }, [ctx.title])
+  }, [ctx.title, ctx.value])
   const onKeyDown = (e) => {
     if (e.key === 'Enter') {
       e.preventDefault()

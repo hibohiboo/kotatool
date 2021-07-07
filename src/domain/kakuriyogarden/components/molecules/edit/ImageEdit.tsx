@@ -1,5 +1,6 @@
 import React from 'react'
 import Dropzone from 'react-dropzone'
+import Image from 'next/image'
 
 const ImageEdit = React.memo<{
   label: string
@@ -19,7 +20,7 @@ const ImageEdit = React.memo<{
               }}
             >
               {prevUrl ? (
-                <img style={{ width: '100%' }} alt={label} src={prevUrl} />
+                <Image layout="fill" alt={label} src={prevUrl} />
               ) : (
                 <></>
               )}
