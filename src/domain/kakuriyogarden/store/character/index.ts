@@ -140,7 +140,7 @@ export const useCharacterViewModel = () => {
       if (data) characterDispatch[key](data)
     }
     setPrevUrl(loadedData.imageUrl)
-  }, [])
+  }, [character, characterDispatch, setPrevUrl])
   useEffect(() => {
     saveData(character)
   }, [character])

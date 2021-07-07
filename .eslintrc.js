@@ -7,6 +7,8 @@ module.exports = {
     '!.storybook/**/*.(js|ts)',
     'public',
     'tests',
+    'component-catalog',
+    'node_modules',
   ],
   extends: [
     'eslint:recommended',

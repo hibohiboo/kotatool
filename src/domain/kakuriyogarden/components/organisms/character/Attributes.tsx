@@ -15,7 +15,7 @@ const component: FC<{
   setAttributes: Dispatch<Attributes[]>
   openInputModal: OpenInputModal
   openIframeModal: OpenIframeModal
-}> = ({ items, setAttributes, openInputModal, openIframeModal }) => {
+}> = ({ items, setAttributes, openInputModal }) => {
   return (
     <div className="kg-section">
       <div className="kg-section-title" style={{ width: '200px' }}>
