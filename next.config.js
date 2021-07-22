@@ -7,7 +7,6 @@ const MODE =
 
 const nextConfig = {
   reactStrictMode: true,
-  future: { webpack5: true },
   webpack: (config) => {
     // src ディレクトリをエイリアスのルートに設定
     config.resolve.alias['~'] = resolve(__dirname, 'src')
@@ -25,6 +24,10 @@ const nextConfig = {
   pwa: {
     dest: 'public', // swの出力ディレクトリ
     // runtimeCaching: []
+  },
+  // Imagesで外部サイトの画像を使おうと思うとここにドメインの登録が必要
+  images: {
+    domains: ['avatars.githubusercontent.com'],
   },
 }
 

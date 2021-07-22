@@ -1,4 +1,3 @@
-import classes from '*.module.css'
 import { FC } from 'react'
 
 const SubPage: FC<{ id: string }> = ({ children, id }) => {

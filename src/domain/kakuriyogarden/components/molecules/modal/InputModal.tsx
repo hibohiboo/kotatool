@@ -6,13 +6,13 @@ import type {
   InputType,
 } from '~/domain/kakuriyogarden/store/character/modal'
 
-const modal: FC<InputModal> = (ctx) => {
+const InputModalComponent: FC<InputModal> = (ctx) => {
   const [value, setValue] = useState('')
 
   // 表示するプロパティが切り替わったタイミングでinputboxをリセット
   useEffect(() => {
     setValue(ctx.value)
-  }, [ctx.title])
+  }, [ctx.title, ctx.value])
   const onKeyDown = (e) => {
     if (e.key === 'Enter') {
       e.preventDefault()
@@ -54,4 +54,4 @@ const modal: FC<InputModal> = (ctx) => {
     </Modal>
   )
 }
-export default modal
+export default InputModalComponent

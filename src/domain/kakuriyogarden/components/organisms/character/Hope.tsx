@@ -1,4 +1,5 @@
 import { FC } from 'react'
+import Image from 'next/image'
 import { getHopeImageUrl } from '~/domain/kakuriyogarden/classes/hope'
 import {
   OpenInputModal,
@@ -27,7 +28,12 @@ const hope: FC<{
       <div className="kg-section-title">
         <span style={{ paddingLeft: '10px' }}>願い</span>
         <div>
-          <img src="/images/kakuriyogarden/icons/human-pictogram/play.png" />
+          <Image
+            src="/images/kakuriyogarden/icons/human-pictogram/play.png"
+            alt="願い"
+            width={50}
+            height={50}
+          />
         </div>
       </div>
       <div
@@ -39,7 +45,12 @@ const hope: FC<{
           {hope}
         </span>
         <div>
-          <img src={getHopeImageUrl(hope)} />
+          <Image
+            src={getHopeImageUrl(hope)}
+            alt="hope"
+            width={50}
+            height={50}
+          />
         </div>
       </div>
       <div

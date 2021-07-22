@@ -10,7 +10,7 @@ const Page: NextPage<{
   id: string
   pageTitle: string
   skills: any
-}> = function (ctx) {
+}> = function () {
   const [skills, setSkills] = useState([])
 
   useEffect(() => {

@@ -55,6 +55,7 @@ export default class URLImage extends React.Component<{
   render() {
     return (
       <Image
+        alt="urlimg"
         x={this.props.x}
         y={this.props.y}
         scaleX={this.scale}

@@ -1,10 +1,14 @@
 module.exports = {
+  root: true,
   ignorePatterns: [
     '!next.config.js',
     '!.eslintrc.js',
     '!.babelrc.js',
     '!.storybook/**/*.(js|ts)',
     'public',
+    'tests',
+    'component-catalog',
+    'node_modules',
   ],
   extends: [
     'eslint:recommended',
@@ -12,9 +16,10 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:prettier/recommended',
+    'next',
+    'next/core-web-vitals',
     'prettier',
   ],
-  plugins: ['@typescript-eslint', 'react'],
   parser: '@typescript-eslint/parser',
   env: {
     browser: true,
@@ -40,6 +45,7 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/no-empty-function': 'off',
     'commma-dangle': 'off',
   },
 }

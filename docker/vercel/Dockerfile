@@ -1,11 +1,11 @@
-FROM node:16.3.0
+FROM node:16.4.1
 
 # コンテナ上の作業ディレクトリ作成
 WORKDIR /app
 
 # 後で確認出来るようにpackage.jsonを作成
 COPY .npmrc /app/.npmrc
-RUN npm install -g npm@7.17.0
+RUN npm install -g npm@7.19.1
 RUN npm init -y
 RUN npm i --no-optional next react react-dom
 
@@ -74,13 +74,27 @@ RUN npm i -D jest ts-jest @types/jest
 
 # img
 RUN npm i react-dropzone
-## canvas library
-RUN npm i --no-optional react-konva  konva@7 --save
+
+# ui
 RUN npm i @material-ui/core
+
 # udonarium
 RUN npm i crypto-js
-# フリック処理
-RUN npm i react-slick
 
 # file archver
 RUN npm i file-saver jszip
+
+# フリック処理
+RUN npm i react-slick
+
+## canvas library
+RUN npm i --no-optional react-konva --save
+
+# react convaが8に対応していないのでダウングレード
+RUN npm i --no-optional konva@7 --save
+
+
+# next11 lint
+RUN npm i eslint-config-next
+
+RUN sed -i -e 's/"license": "MIT",/"license": "MIT",\n  "browserslist": [">0.3%","not ie 11","not dead","not op_mini all"],/g' /app/package.json

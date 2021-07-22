@@ -6,6 +6,8 @@ import React, {
   useCallback,
 } from 'react'
 import { Stage, Layer, Rect, Text, Group } from 'react-konva'
+import Image from 'next/image'
+
 import { getHopeImageUrl } from '~/domain/kakuriyogarden/classes/hope'
 import OutLine from './card/outline'
 import URLImage from '~/domain/kakuriyogarden/components/atoms/konva/URLImage'
@@ -23,11 +25,10 @@ const ImageArea: React.FC<{ character: Character; gardenUrl: string }> = ({
   const useIsomorphicLayoutEffect =
     typeof window !== 'undefined' ? useLayoutEffect : useEffect
   const tags = character.tags.split(',')
-  const size = 50
 
   const canvasWidth = 242
   const canvasHight = 342
-  const leftPadding = 5
+
   const family = {
     gothic:
       '"Hiragino Sans W3", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif',
@@ -37,15 +38,10 @@ const ImageArea: React.FC<{ character: Character; gardenUrl: string }> = ({
   }
   // 基本フォントサイズ
   const fontSize = 14
-  const lineHeight = 1.5
 
   // カードの横幅ガイド src\styles\kakuriyogarden\card\index.scssより
   const leftGap = 5
   const innerLeft = 60 + leftGap
-  const attrLabel = 60 + innerLeft
-  const attrValue = 1 + attrLabel
-  const innerRight = 1 + attrValue
-  const rightGap = 4
 
   // カードの縦幅ガイド
   const innerTop = 20 - 5
@@ -82,7 +78,12 @@ const ImageArea: React.FC<{ character: Character; gardenUrl: string }> = ({
 
   return (
     <>
-      <img className="sample-image" src={url} style={{ width: '100%' }}></img>
+      <Image
+        className="sample-image"
+        src={url}
+        layout="fill"
+        alt="キャラクター"
+      />
       <div style={{ display: 'none' }}>
         <Stage width={canvasWidth} height={canvasHight} ref={stageRef}>
           <Layer ref={canvasRef}>

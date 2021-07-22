@@ -1,7 +1,6 @@
 import firebase from 'firebase/app'
 import { db } from '~/lib/firebase/initFirebase'
 import * as constants from '~/lib/constants'
-import { toSerializeObject, toTimestamp } from '~/lib/firestore/utils'
 
 interface UserData {
   uid: string

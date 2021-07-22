@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react'
+import { FC } from 'react'
 import Modal from './Modal'
 import ImageEdit from '../edit/ImageEdit'
 import { ImageEditModal } from '~/domain/kakuriyogarden/store/character/modal'

@@ -10,7 +10,9 @@ export type InputType = 'text' | 'textarea' | 'number'
 const inputModalBase = {
   title: '',
   value: '',
-  changeHandler: (value: string) => {},
+  changeHandler: (value: string) => {
+    console.log(value)
+  },
   show: false,
   closeHandler: () => {},
   type: 'text' as InputType,
@@ -46,7 +48,9 @@ const imageEditModalBase = {
   show: false,
   label: '',
   url: '',
-  dropHandler: (event: any) => {},
+  dropHandler: (event: any) => {
+    console.log(event)
+  },
   closeHandler: () => {},
 }
 export type ImageEditModal = typeof imageEditModalBase
@@ -74,7 +78,9 @@ export type OpenImageEditModal = ReturnType<
 const negaiModalBase = {
   show: false,
   hope: '献身',
-  hopeHandler: (hope: Hope) => {},
+  hopeHandler: (hope: Hope) => {
+    console.log(hope)
+  },
   closeHandler: () => {},
 }
 export type NegaiModal = typeof negaiModalBase
@@ -100,7 +106,9 @@ export type OpenNegaiModal = ReturnType<typeof useNegaiModal>['openNegaiModal']
 const gadgetModalBase = {
   show: false,
   gadget: '武器',
-  gadgetHandler: (gadget: Gadget) => {},
+  gadgetHandler: (gadget: Gadget) => {
+    console.log(gadget)
+  },
   closeHandler: () => {},
 }
 export type GadgetModal = typeof gadgetModalBase
@@ -198,7 +206,9 @@ export type OpenGemoryModal = ReturnType<
 const gemoryTypeModalBase = {
   show: false,
   type: '死',
-  gemoryTypeHandler: (gadget: GemoryType) => {},
+  gemoryTypeHandler: (gadget: GemoryType) => {
+    console.log(gadget)
+  },
   closeHandler: () => {},
 }
 export type GemoryTypeModal = typeof gemoryTypeModalBase
@@ -249,7 +259,9 @@ const cardListModalBase = {
   cardList: [],
   show: false,
   closeHandler: () => {},
-  dispatchHandler: (m: Magic) => {},
+  dispatchHandler: (m: Magic) => {
+    console.log(m)
+  },
 }
 export type CardListModal = typeof cardListModalBase
 export const useCardListModal = () => {

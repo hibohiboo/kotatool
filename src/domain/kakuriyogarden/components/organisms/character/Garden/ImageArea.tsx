@@ -6,6 +6,7 @@ import React, {
   useCallback,
 } from 'react'
 import { Stage, Layer, Rect } from 'react-konva'
+import Image from 'next/image'
 import Cell from './atoms/GardenCell'
 import { Gemory } from '~/domain/kakuriyogarden/classes/gemory'
 import { getHopeImageUrl, Hope } from '~/domain/kakuriyogarden/classes/hope'
@@ -42,7 +43,8 @@ const ImageArea: React.FC<{
   }, [])
   return (
     <>
-      <img className="sample-image" src={url} style={{ width: '100%' }}></img>
+      <Image src={url} alt="イメージ" className="sample-image" layout="fill" />
+
       <div style={{ display: 'none' }}>
         <Stage width={canvasWidth} height={canvasHight} ref={stageRef}>
           <Layer ref={canvasRef}>

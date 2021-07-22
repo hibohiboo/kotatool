@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from 'react'
 import { Stage, Layer, Rect, Text, Line } from 'react-konva'
+import Image from 'next/image'
 import OutLine from './card/outline'
 import CellImage from '~/domain/kakuriyogarden/components/organisms/character/Garden/atoms/CellImage'
 import TagText from '~/domain/kakuriyogarden/components/atoms/konva/TagText'
@@ -20,16 +21,13 @@ const ImageArea: React.FC<{ magic: Magic; id: string }> = ({ magic, id }) => {
   }
   // 基本フォントサイズ
   const fontSize = 14
-  const lineHeight = 1.5
+
   const textPagging = 6
   // カードの横幅ガイド src\styles\kakuriyogarden\card\index.scssより
   const leftGap = 5
   const innerLeft = 60 + leftGap
   const innerLeftLabel = innerLeft + textPagging
   const attrLabel = 60 + innerLeftLabel + textPagging
-  const attrValue = 1 + attrLabel
-  const innerRight = 1 + attrValue
-  const rightGap = 4
 
   // カードの縦幅ガイド
   const innerTop = 20 - 5
@@ -41,24 +39,30 @@ const ImageArea: React.FC<{ magic: Magic; id: string }> = ({ magic, id }) => {
   const count = 20 + target_
   const exp = 20 + count
   const mainContent = 20 + exp
-  const bottomContent = 130 + mainContent
+
   const [url, setUrl] = useState('')
-  const measuredRef = useCallback((node) => {
-    if (node !== null) {
-      try {
-        const canvas: HTMLCanvasElement = node.toCanvas()
-        console.log('update canvas')
-        setUrl(canvas.toDataURL())
-      } catch (e) {
-        console.error(`canvas is null name:${magic.name}`, e)
+  const measuredRef = useCallback(
+    (node) => {
+      if (node !== null) {
+        try {
+          const canvas: HTMLCanvasElement = node.toCanvas()
+          console.log('update canvas')
+          setUrl(canvas.toDataURL())
+        } catch (e) {
+          console.error(`canvas is null name:${magic.name}`, e)
+        }
       }
-    }
-  }, [])
-  const canvasRef = useCallback((node) => {
-    if (node) {
-      node.getCanvas()._canvas.id = id
-    }
-  }, [])
+    },
+    [magic.name],
+  )
+  const canvasRef = useCallback(
+    (node) => {
+      if (node) {
+        node.getCanvas()._canvas.id = id
+      }
+    },
+    [id],
+  )
 
   const cellSize = 50
   const dataAreaHeight = 100
@@ -73,7 +77,8 @@ const ImageArea: React.FC<{ magic: Magic; id: string }> = ({ magic, id }) => {
   }
   return (
     <div>
-      <img className="sample-image" src={url} style={{ width: '100%' }}></img>
+      <Image className="sample-image" src={url} layout="fill" alt="カード" />
+
       <div style={{ display: 'none' }}>
         <Stage width={canvasWidth} height={canvasHight} ref={measuredRef}>
           <Layer ref={canvasRef}>

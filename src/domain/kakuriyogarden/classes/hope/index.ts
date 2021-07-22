@@ -1,22 +1,20 @@
 export type Hope = '献身' | '利己' | '復讐'
-export const getHopeImageUrl = (hope: Hope)=>{
-  if(hope==='献身') return dedicationImage.url
-  if(hope==='利己') return egoImage.url
-  if(hope==='復讐') return avengeIamge.url
+export const getHopeImageUrl = (hope: Hope) => {
+  if (hope === '献身') return dedicationImage.url
+  if (hope === '利己') return egoImage.url
+  if (hope === '復讐') return avengeIamge.url
 }
 
-export const getHopeMagic = (hope: Hope)=>{
-  if(hope==='献身') return dedicationMagica
-  if(hope==='利己') return egoMagica
-  if(hope==='復讐') return avengeMagica
+export const getHopeMagic = (hope: Hope) => {
+  if (hope === '献身') return dedicationMagica
+  if (hope === '利己') return egoMagica
+  if (hope === '復讐') return avengeMagica
 }
 
 const dedicationImage = {
-  url:
-    '/images/kakuriyogarden/icons/game-icons/heart-wings.svg',
+  url: '/images/kakuriyogarden/icons/game-icons/heart-wings.svg',
   source: 'Game-icons.net',
-  sourceUrl:
-    'https://game-icons.net/1x1/delapouite/heart-wings.html',
+  sourceUrl: 'https://game-icons.net/1x1/delapouite/heart-wings.html',
 }
 export const dedicationMagica = {
   type: '小奇跡',
@@ -41,11 +39,9 @@ export const dedicationMagica = {
 }
 
 const egoImage = {
-  url:
-    '/images/kakuriyogarden/icons/game-icons/rainbow-star.svg',
+  url: '/images/kakuriyogarden/icons/game-icons/rainbow-star.svg',
   source: 'Game-icons.net',
-  sourceUrl:
-    'https://game-icons.net/1x1/delapouite/rainbow-star.html',
+  sourceUrl: 'https://game-icons.net/1x1/delapouite/rainbow-star.html',
 }
 export const egoMagica = {
   type: '小奇跡',
@@ -68,11 +64,9 @@ export const egoMagica = {
   exp: 0,
 }
 const avengeIamge = {
-  url:
-    '/images/kakuriyogarden/icons/game-icons/spark-spirit.png',
+  url: '/images/kakuriyogarden/icons/game-icons/spark-spirit.png',
   source: 'Game-icons.net',
-  sourceUrl:
-    'https://game-icons.net/1x1/lorc/spark-spirit.html',
+  sourceUrl: 'https://game-icons.net/1x1/lorc/spark-spirit.html',
 }
 export const avengeMagica = {
   type: '小奇跡',
@@ -88,7 +82,7 @@ export const avengeMagica = {
   gardeneffect: '与えるダメージ+1。受けるダメージ+1。',
   description: '昏く燃え盛る炎。',
   id: '',
-  image:avengeIamge,
+  image: avengeIamge,
   maxLevel: 1,
   successRate: '100%',
   level: 1,

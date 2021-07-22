@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import Modal from '~/domain/kakuriyogarden/components/molecules/modal/Modal'
-
+import Image from 'next/image'
 import type { GadgetModal } from '~/domain/kakuriyogarden/store/character/modal'
 import { getGadgetImageUrl } from '~/domain/kakuriyogarden/classes/gadget'
 
@@ -21,7 +21,12 @@ const modal: FC<GadgetModal> = (ctx) => {
           onClick={() => ctx.gadgetHandler('武器')}
         >
           <h3>武器</h3>
-          <img src={getGadgetImageUrl('武器')} />
+          <Image
+            src={getGadgetImageUrl('武器')}
+            width={50}
+            height={50}
+            alt="武器"
+          />
           <p>得意魔法:攻撃。ナイフ、銃、剣型の首飾りなど</p>
         </div>
         <div
@@ -29,13 +34,25 @@ const modal: FC<GadgetModal> = (ctx) => {
           onClick={() => ctx.gadgetHandler('仮面')}
         >
           <h3>仮面</h3>
-          <img src={getGadgetImageUrl('仮面')} />
+          <Image
+            src={getGadgetImageUrl('仮面')}
+            width={50}
+            height={50}
+            alt="仮面"
+          />
+
           <p>得意魔法:防御。仮面、眼鏡、口紅、マニキュアなど</p>
         </div>
 
         <div className="kg-modal-hope" onClick={() => ctx.gadgetHandler('鎖')}>
           <h3>鎖</h3>
-          <img src={getGadgetImageUrl('鎖')} />
+          <Image
+            src={getGadgetImageUrl('鎖')}
+            width={50}
+            height={50}
+            alt="鎖"
+          />
+
           <p>得意魔法:妨害。リボン、チェーン、注連縄、ベルト、首輪など</p>
         </div>
         <div
@@ -43,7 +60,13 @@ const modal: FC<GadgetModal> = (ctx) => {
           onClick={() => ctx.gadgetHandler('生物')}
         >
           <h3>生物</h3>
-          <img src={getGadgetImageUrl('生物')} />
+          <Image
+            src={getGadgetImageUrl('生物')}
+            width={50}
+            height={50}
+            alt="生物"
+          />
+
           <p>得意魔法:強化。獣、魚、昆虫、爬虫類、牙、爪、尻尾など</p>
         </div>
         <div
@@ -51,7 +74,13 @@ const modal: FC<GadgetModal> = (ctx) => {
           onClick={() => ctx.gadgetHandler('自然')}
         >
           <h3>自然</h3>
-          <img src={getGadgetImageUrl('自然')} />
+          <Image
+            src={getGadgetImageUrl('自然')}
+            width={50}
+            height={50}
+            alt="自然"
+          />
+
           <p>得意魔法:回復。太陽、海、花、草など</p>
         </div>
         <div
@@ -59,7 +88,13 @@ const modal: FC<GadgetModal> = (ctx) => {
           onClick={() => ctx.gadgetHandler('歯車')}
         >
           <h3>歯車</h3>
-          <img src={getGadgetImageUrl('歯車')} />
+          <Image
+            src={getGadgetImageUrl('歯車')}
+            width={50}
+            height={50}
+            alt="歯車"
+          />
+
           <p>時計、オルゴールなど。</p>
         </div>
       </div>

@@ -1,4 +1,5 @@
 import { Dispatch, FC } from 'react'
+import Image from 'next/image'
 import { OpenInputModal } from '~/domain/kakuriyogarden/store/character/modal'
 import Ruby from '~/domain/kakuriyogarden/components/atoms/RubyText'
 interface Equipment {
@@ -17,10 +18,17 @@ const component: FC<{
           <ruby>魔装</ruby>
         </span>
         <div className="flex-centering">
-          <img src="/images/kakuriyogarden/icons/game-icons/ample-dress.svg" />
+          <Image
+            src="/images/kakuriyogarden/icons/game-icons/ample-dress.svg"
+            alt="魔装"
+            width={50}
+            height={50}
+          />
+
           <a
             href="https://scrapbox.io/magicalGirlTRPG/%E9%AD%94%E8%A3%85%E4%B8%80%E8%A6%A7"
             target="_blank"
+            rel="noreferrer"
           >
             <i
               className="far fa-question-circle"

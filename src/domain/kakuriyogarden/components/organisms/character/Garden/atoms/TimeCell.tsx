@@ -1,7 +1,7 @@
 import React from 'react'
 import { Group, Rect, Text } from 'react-konva'
 const cellSize = 50
-export default ({
+const timeCell = ({
   x,
   y,
   color,
@@ -32,3 +32,4 @@ export default ({
     />
   </Group>
 )
+export default timeCell

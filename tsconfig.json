@@ -18,6 +18,6 @@
     "isolatedModules": true,
     "jsx": "preserve"
   },
-  "exclude": ["node_modules", "__tests__"],
+  "exclude": ["node_modules", "__tests__","internals"],
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
 }

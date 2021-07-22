@@ -100,22 +100,67 @@ export type Garden = Character['garden']
 
 // state -> setState
 // const getSetName = (key:string)=>`set${key.replace(/^./, (match)=>match.toUpperCase())}`
-const characterToState = (c: Character) => {
-  const char = {} as Character
-  const sets = {} as {
+const useCharacterToState = (c: Character) => {
+  const [attributes, setAttributes] = useState(c.attributes)
+  const [color, setColor] = useState(c.color)
+  const [deviations, setDeviations] = useState(c.deviations)
+  const [equipments, setEquipments] = useState(c.equipments)
+  const [gadget, setGadget] = useState(c.gadget)
+  const [gadgetDetail, setGadgetDetail] = useState(c.gadgetDetail)
+  const [garden, setGarden] = useState(c.garden)
+  const [hope, setHope] = useState(c.hope)
+  const [hopeDetail, setHopeDetail] = useState(c.hopeDetail)
+  const [magicalName, setMagicalName] = useState(c.magicalName)
+  const [openness, setOpenness] = useState(c.openness)
+  const [playerName, setPlayerName] = useState(c.playerName)
+  const [profile, setProfile] = useState(c.profile)
+  const [symbolName, setSymbolName] = useState(c.symbolName)
+  const [symbolNameKana, setSymbolNameKana] = useState(c.symbolNameKana)
+  const [tags, setTags] = useState(c.tags)
+  const char = {
+    attributes,
+    color,
+    deviations,
+    equipments,
+    gadget,
+    gadgetDetail,
+    garden,
+    hope,
+    hopeDetail,
+    magicalName,
+    openness,
+    playerName,
+    profile,
+    symbolName,
+    symbolNameKana,
+    tags,
+  } as Character
+  const sets: {
     [K in Exclude<keyof Character, 'imageUrl'>]: Dispatch<Character[K]>
+  } = {
+    attributes: setAttributes,
+    color: setColor,
+    deviations: setDeviations,
+    equipments: setEquipments,
+    gadget: setGadget,
+    gadgetDetail: setGadgetDetail,
+    garden: setGarden,
+    hope: setHope,
+    hopeDetail: setHopeDetail,
+    magicalName: setMagicalName,
+    openness: setOpenness,
+    playerName: setPlayerName,
+    profile: setProfile,
+    symbolName: setSymbolName,
+    symbolNameKana: setSymbolNameKana,
+    tags: setTags,
   }
-  for (const key of Object.keys(c)) {
-    if (key === 'imageUrl') continue
-    const [a, b] = useState(c[key])
-    char[key] = a
-    sets[key] = b
-  }
+
   return [char, sets] as const
 }
 
 export const useCharacterViewModel = () => {
-  const [character, characterDispatch] = characterToState(sampleCharacter)
+  const [character, characterDispatch] = useCharacterToState(sampleCharacter)
   const { inputModal, openInputModal } = useInputModal()
   const { imageEditModal, openImageEditModal } = useImageEditModal()
   const { negaiModal, openNegaiModal } = useNegaiModal()
@@ -140,7 +185,7 @@ export const useCharacterViewModel = () => {
       if (data) characterDispatch[key](data)
     }
     setPrevUrl(loadedData.imageUrl)
-  }, [])
+  }, [character, characterDispatch, setPrevUrl])
   useEffect(() => {
     saveData(character)
   }, [character])

@@ -3,8 +3,9 @@ import { getGemoryImage } from '~/domain/kakuriyogarden/classes/gemory'
 import Modal from '~/domain/kakuriyogarden/components/molecules/modal/Modal'
 import type { GemoryModal } from '~/domain/kakuriyogarden/store/character/modal'
 import Ruby from '~/domain/kakuriyogarden/components/atoms/RubyText'
+import Image from 'next/image'
 
-const modal: FC<GemoryModal> = (ctx) => {
+const GemoryModalComponent: FC<GemoryModal> = (ctx) => {
   const { gemory } = ctx
   const [description, setDescrption] = useState(gemory.description)
   const [strength, setStrength] = useState(gemory.strength)
@@ -37,9 +38,11 @@ const modal: FC<GemoryModal> = (ctx) => {
             }}
           >
             <h4>種別:{gemoryType}</h4>
-            <img
+            <Image
               src={getGemoryImage(gemoryType)}
-              style={{ width: '50px', height: '50px' }}
+              width={50}
+              height={50}
+              alt="gemorytype"
             />
           </div>
           <div style={{ marginLeft: '20px' }}>
@@ -138,4 +141,4 @@ const modal: FC<GemoryModal> = (ctx) => {
     </Modal>
   )
 }
-export default modal
+export default GemoryModalComponent

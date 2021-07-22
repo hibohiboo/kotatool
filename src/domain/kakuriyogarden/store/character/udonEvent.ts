@@ -14,7 +14,7 @@ import { getHopeMagic } from '../../classes/hope'
 import { DATETIME_FILE_FORMAT } from '~/lib/constants'
 
 const getCanvasBlob = (canvas: HTMLCanvasElement): Promise<Blob> =>
-  new Promise((resolve, reject) => canvas.toBlob((blob) => resolve(blob)))
+  new Promise((resolve) => canvas.toBlob((blob) => resolve(blob)))
 
 export const createZip = async (character: Character) => {
   const files = await createCardStacks(character)

@@ -1,4 +1,5 @@
 import { Dispatch, FC, useEffect, useState } from 'react'
+import Image from 'next/image'
 import { getGemoryImage } from '~/domain/kakuriyogarden/classes/gemory'
 import { Magic, gemory } from '~/domain/kakuriyogarden/classes/gemory/magic'
 import {
@@ -16,7 +17,7 @@ import {
 import ImageArea from './ImageArea'
 import { createZip } from '~/domain/kakuriyogarden/store/character/udonEvent'
 
-const component: FC<{
+const Component: FC<{
   cardList: Magic[]
   character: Character
   dispatch: Record<string, Dispatch<any>>
@@ -60,7 +61,13 @@ const component: FC<{
               心象庭園<rt>ガーデン</rt>
             </ruby>
           </span>
-          <img src="/images/kakuriyogarden/icons/game-icons/field.svg" />
+          <Image
+            src="/images/kakuriyogarden/icons/game-icons/field.svg"
+            alt="ガーデン"
+            width={50}
+            height={50}
+          />
+
           <input
             value={character.color}
             type="color"
@@ -159,7 +166,12 @@ const component: FC<{
                         })
                       }
                     >
-                      <img src="/images/kakuriyogarden/icons/game-icons/crystal-growth.svg" />
+                      <Image
+                        src="/images/kakuriyogarden/icons/game-icons/crystal-growth.svg"
+                        alt="想晶"
+                        width={50}
+                        height={50}
+                      />
                     </div>
                   ) : (
                     <div
@@ -183,7 +195,16 @@ const component: FC<{
                         })
                       }}
                     >
-                      {c ? <img src={c.image.url} /> : <></>}
+                      {c ? (
+                        <Image
+                          src={c.image.url}
+                          alt={c.name}
+                          width={50}
+                          height={50}
+                        />
+                      ) : (
+                        <></>
+                      )}
                     </div>
                   ),
                 )}
@@ -217,14 +238,24 @@ const component: FC<{
                   })
                 }
               >
-                <img src="/images/kakuriyogarden/icons/game-icons/crystal-growth.svg" />
+                <Image
+                  src="/images/kakuriyogarden/icons/game-icons/crystal-growth.svg"
+                  alt="想晶"
+                  width={50}
+                  height={50}
+                />
               </div>
               <div
                 className="kg-garden-layer-col"
                 style={{ backgroundColor: character.color, cursor: 'pointer' }}
                 onClick={() => openCardModal(getHopeMagic(hope))}
               >
-                <img src={getHopeImageUrl(hope)} />
+                <Image
+                  src={getHopeImageUrl(hope)}
+                  alt={'願い'}
+                  width={50}
+                  height={50}
+                />
               </div>
             </div>
           </div>
@@ -241,4 +272,4 @@ const component: FC<{
     </>
   )
 }
-export default component
+export default Component

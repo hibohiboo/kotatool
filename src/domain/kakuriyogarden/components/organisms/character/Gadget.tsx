@@ -1,4 +1,5 @@
 import { Dispatch, FC } from 'react'
+import Image from 'next/image'
 import {
   Gadget,
   getGadgetImageUrl,
@@ -33,7 +34,12 @@ const cloth: FC<{
           </ruby>
         </span>
         <div className="flex-centering">
-          <img src="/images/kakuriyogarden/icons/game-icons/pendant-key.svg" />
+          <Image
+            src="/images/kakuriyogarden/icons/game-icons/pendant-key.svg"
+            alt="ガジェット"
+            width={50}
+            height={50}
+          />
         </div>
       </div>
       <div
@@ -48,7 +54,12 @@ const cloth: FC<{
           </ruby>
         </span>
         <div>
-          <img src={getGadgetImageUrl(gadget)} />
+          <Image
+            src={getGadgetImageUrl(gadget)}
+            alt="モチーフ"
+            width={50}
+            height={50}
+          />
         </div>
       </div>
       <div
