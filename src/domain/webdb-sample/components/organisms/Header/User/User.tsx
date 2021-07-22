@@ -12,7 +12,7 @@ export function User() {
         <p className={styles.name}>
           {session?.user?.name ? session.user.name : 'Guest User'}
         </p>
-        <p className={styles.avatar}>
+        <div className={styles.avatar}>
           {session?.user && typeof session.user.image === 'string' && (
             <Image
               src={session.user.image}
@@ -21,7 +21,7 @@ export function User() {
               alt="user image"
             />
           )}
-        </p>
+        </div>
         <div className={styles.signInOut}>
           {session ? (
             <Button onClick={() => signOut()}>SIGN OUT</Button>
