@@ -1,0 +1,12 @@
+.summary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100px;
+}
+
+.description {
+  width: 100%;
+  margin-left: 16px;
+}
