@@ -1,8 +1,8 @@
 .module {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   height: 100vh;
   padding-bottom: 32px;
 }
@@ -16,8 +16,8 @@
 .form {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 }
 
 .form input {

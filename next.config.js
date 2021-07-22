@@ -25,6 +25,10 @@ const nextConfig = {
     dest: 'public', // swの出力ディレクトリ
     // runtimeCaching: []
   },
+  // Imagesで外部サイトの画像を使おうと思うとここにドメインの登録が必要
+  images: {
+    domains: ['avatars.githubusercontent.com'],
+  },
 }
 
 // PWA に対応

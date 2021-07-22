@@ -11,14 +11,13 @@ type Props = {
 export function UserDescription({ user }: Props) {
   return (
     <div className={styles.module}>
-      <p className={styles.avatar}>
-        <Image
-          src={user.avatar_url as string}
-          width="230"
-          height="230"
-          alt="avatar"
-        />
-      </p>
+      <div className={styles.avatar}>
+        {typeof user.avatar_url === 'string' ? (
+          <Image src={user.avatar_url} width="230" height="230" alt="avatar" />
+        ) : (
+          <></>
+        )}
+      </div>
       <div className={styles.description}>
         <h1>{user.name}</h1>
         <h3>{user.bio}</h3>
