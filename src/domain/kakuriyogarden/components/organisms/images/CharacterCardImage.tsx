@@ -75,15 +75,20 @@ const ImageArea: React.FC<{ character: Character; gardenUrl: string }> = ({
   const canvasRef = useCallback((node) => {
     if (node) node.getCanvas()._canvas.id = 'card-character'
   }, [])
+  console.log('test', url)
 
   return (
     <>
-      <Image
-        className="sample-image"
-        src={url}
-        layout="fill"
-        alt="キャラクター"
-      />
+      {!url ? (
+        <></>
+      ) : (
+        <Image
+          className="sample-image"
+          src={url}
+          layout="fill"
+          alt="キャラクター"
+        />
+      )}
       <div style={{ display: 'none' }}>
         <Stage width={canvasWidth} height={canvasHight} ref={stageRef}>
           <Layer ref={canvasRef}>

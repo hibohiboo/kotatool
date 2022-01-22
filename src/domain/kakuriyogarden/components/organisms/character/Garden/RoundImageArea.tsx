@@ -29,7 +29,11 @@ const ImageArea: React.FC = () => {
   return (
     <>
       <Hidden mdUp implementation="css">
-        <Image className="sample-image" src={url} layout="fill" alt="" />
+        {/* {!url ? (
+          <></>
+        ) : (
+          <Image className="sample-image" src={url} layout="fill" alt="" />
+        )} */}
       </Hidden>
       <Hidden smDown implementation="css">
         <Stage width={canvasWidth} height={canvasHight} ref={stageRef}>

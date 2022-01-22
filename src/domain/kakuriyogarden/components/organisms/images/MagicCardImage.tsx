@@ -77,7 +77,11 @@ const ImageArea: React.FC<{ magic: Magic; id: string }> = ({ magic, id }) => {
   }
   return (
     <div>
-      <Image className="sample-image" src={url} layout="fill" alt="カード" />
+      {!url ? (
+        <></>
+      ) : (
+        <Image className="sample-image" src={url} layout="fill" alt="カード" />
+      )}
 
       <div style={{ display: 'none' }}>
         <Stage width={canvasWidth} height={canvasHight} ref={measuredRef}>

@@ -29,7 +29,12 @@ const Profile: FC<{
           openImageEditModal('キャラクターアイコン', imageUrl, handleOnDrop)
         }}
       >
-        <Image src={imageUrl} layout="fill" alt="キャラクターアイコン" />
+        <Image
+          src={imageUrl}
+          width={50}
+          height={50}
+          alt="キャラクターアイコン"
+        />
       </div>
       <div
         className="kg-editable"

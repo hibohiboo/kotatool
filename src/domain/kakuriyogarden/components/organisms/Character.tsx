@@ -115,7 +115,7 @@ const Item: FC<{ vm: CharacterViewModel; cardList: Magic[] }> = ({
         openCardListModal={vm.openCardListModal}
         setGardenUrl={vm.setGardenUrl}
       />
-      <div style={{ width: '242px', margin: '0 auto' }}>
+      <div style={{ width: '242px', margin: '0 auto', position: 'relative' }}>
         <CharacterCard character={vm.character} gardenUrl={vm.gardenUrl} />
       </div>
       <Cards character={vm.character} />

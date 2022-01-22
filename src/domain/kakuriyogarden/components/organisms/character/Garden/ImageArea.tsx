@@ -43,7 +43,16 @@ const ImageArea: React.FC<{
   }, [])
   return (
     <>
-      <Image src={url} alt="イメージ" className="sample-image" layout="fill" />
+      {!url ? (
+        <></>
+      ) : (
+        <Image
+          src={url}
+          alt="イメージ"
+          className="sample-image"
+          layout="fill"
+        />
+      )}
 
       <div style={{ display: 'none' }}>
         <Stage width={canvasWidth} height={canvasHight} ref={stageRef}>

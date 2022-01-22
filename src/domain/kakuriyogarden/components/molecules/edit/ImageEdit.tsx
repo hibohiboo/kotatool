@@ -17,6 +17,7 @@ const ImageEdit = React.memo<{
                 width: '50px',
                 height: '50px',
                 overflow: 'hidden',
+                position: 'relative',
               }}
             >
               {prevUrl ? (

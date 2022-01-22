@@ -185,7 +185,9 @@ export const useCharacterViewModel = () => {
       if (data) characterDispatch[key](data)
     }
     setPrevUrl(loadedData.imageUrl)
-  }, [character, characterDispatch, setPrevUrl])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   useEffect(() => {
     saveData(character)
   }, [character])
