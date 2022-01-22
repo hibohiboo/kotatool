@@ -2,9 +2,19 @@ import React, { useEffect, useState } from 'react'
 import { NextPage } from 'next'
 import Head from 'next/head'
 import fetch from 'isomorphic-unfetch'
-import Edit from '~/domain/kakuriyogarden/components/'
-import { Magic } from '~/domain/kakuriyogarden/classes/gemory/magic'
 import { useCharacterViewModel } from '~/domain/kakuriyogarden/store/character'
+import type { Magic } from '~/domain/kakuriyogarden/classes/gemory/magic'
+import dynamic from 'next/dynamic'
+
+// react-konva と next12の相性が悪く、以下のエラーが出る。
+// Error: Must use import to load ES Module: C:\Users\bucsa\dev\atomic\node_modules\konva\lib\Core.js
+// require() of ES modules is not supported.
+// Issueに載っているようにdynamicを使って解決
+// https://github.com/konvajs/react-konva/issues/588
+
+const Edit = dynamic(() => import('~/domain/kakuriyogarden/components/'), {
+  ssr: false,
+})
 
 const Page: NextPage<{
   id: string

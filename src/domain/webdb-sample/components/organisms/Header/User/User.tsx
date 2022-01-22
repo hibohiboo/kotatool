@@ -1,11 +1,12 @@
 import Image from 'next/image'
 import { Button } from '~/domain/webdb-sample/components/atoms/Button'
-import { signIn, signOut, useSession } from 'next-auth/client'
+import { signIn, signOut, useSession } from 'next-auth/react'
 import styles from './styles.module.css'
 // ___________________________________________________________________________
 //
 export function User() {
-  const [session] = useSession()
+  // https://next-auth.js.org/getting-started/client#usesession
+  const { data: session } = useSession()
   return (
     <div className={styles.module}>
       <div className={styles.user}>
