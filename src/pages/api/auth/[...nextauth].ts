@@ -1,6 +1,6 @@
 import NextAuth from 'next-auth'
 import { JWT } from 'next-auth/jwt'
-import Providers from 'next-auth/providers'
+import GitHubProvider from 'next-auth/providers/github'
 // ___________________________________________________________________________
 //
 if (typeof process.env.GITHUB_OAUTH_CLIENT_ID !== 'string') {
@@ -13,24 +13,23 @@ if (typeof process.env.GITHUB_OAUTH_CLIENT_SECRET !== 'string') {
 //
 export default NextAuth({
   providers: [
-    Providers.GitHub({
+    GitHubProvider({
       clientId: process.env.GITHUB_OAUTH_CLIENT_ID,
       clientSecret: process.env.GITHUB_OAUTH_CLIENT_SECRET,
-      scope: 'repo',
     }),
   ],
-  callbacks: {
-    async jwt(token, user, account) {
-      if (account?.accessToken) {
-        token.accessToken = account.accessToken
-      }
-      return token
-    },
-    async session(session, userOrToken) {
-      return Promise.resolve({
-        ...session,
-        accessToken: (userOrToken as JWT).accessToken as string,
-      })
-    },
-  },
+  // callbacks: {
+  //   async jwt(token, user, account) {
+  //     if (account?.accessToken) {
+  //       token.accessToken = account.access_token
+  //     }
+  //     return token
+  //   },
+  //   async session(session, userOrToken) {
+  //     return Promise.resolve({
+  //       ...session,
+  //       accessToken: (userOrToken as JWT).accessToken as string,
+  //     })
+  //   },
+  // },
 })
