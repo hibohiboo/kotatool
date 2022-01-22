@@ -14,9 +14,6 @@ export default function Home() {
           <li>
             <Link href="/kakuriyogarden/characters/edit">カクリヨガーデン</Link>
           </li>
-          <li>
-            <Link href="/github/">github</Link>
-          </li>
         </ul>
       </main>
       <Footer />

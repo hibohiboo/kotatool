@@ -1,9 +1,0 @@
-.module {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  height: 100px;
-  background-color: rgb(55, 55, 55);
-}
