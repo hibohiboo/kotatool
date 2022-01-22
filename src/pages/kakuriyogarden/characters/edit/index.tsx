@@ -100,8 +100,8 @@ export const getSheetData = async (
   range: string,
 ): Promise<{ values: string[][] }> => {
   const res = await fetch(
-    // `${fetchUrl}/${spreadId}/values/${sheet}!${range}?key=${key}`,
-    `${fetchUrl}/${spreadId}/values/${sheet}!${range}`,
+    `${fetchUrl}/${spreadId}/values/${sheet}!${range}?key=${key}`,
+    // `${fetchUrl}/${spreadId}/values/${sheet}!${range}`,
   )
   if (res.status >= 400) {
     return { values: [[]] }
