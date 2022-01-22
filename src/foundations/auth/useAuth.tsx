@@ -7,11 +7,11 @@ import apiPath from '~/lib/apiPath'
 import * as constants from '~/lib/constants'
 import { updateUser } from '~/lib/firestore/user'
 import { setLatestLoginDate, getLatestLoginDate } from '~/lib/localStorage'
-import type firebase from 'firebase'
+import { signInAnonymously, User as FirebaseUser } from 'firebase/auth'
 
 const signIn = async () => {
   try {
-    await auth.signInAnonymously()
+    await signInAnonymously(auth)
   } catch (e) {
     console.error('認証エラー', e)
   }
@@ -24,7 +24,7 @@ const checkDateServerSide = async (date: string) => {
   return latestLoginDate === date
 }
 
-const dailyLogin = async (user: firebase.User) => {
+const dailyLogin = async (user: FirebaseUser) => {
   const latestLoginDate = format(new Date(), constants.DATE_FORMAT)
 
   if (
@@ -37,7 +37,7 @@ const dailyLogin = async (user: firebase.User) => {
 }
 
 export const useSignIn = () => {
-  const [currentUser, setCurrentUser] = useState<null | firebase.User>(null)
+  const [currentUser, setCurrentUser] = useState<null | FirebaseUser>(null)
 
   useEffect(() => {
     // 監視を解除する関数を返す
@@ -72,7 +72,7 @@ export const useSignOut = () => {
 
 export const useAuth = () => {
   const router = useRouter()
-  const [currentUser, setCurrentUser] = useState<null | firebase.User>(null)
+  const [currentUser, setCurrentUser] = useState<null | FirebaseUser>(null)
 
   useLayoutEffect(
     () =>
