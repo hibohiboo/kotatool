@@ -8,6 +8,7 @@ import * as constants from '~/lib/constants'
 import { updateUser } from '~/lib/firestore/user'
 import { setLatestLoginDate, getLatestLoginDate } from '~/lib/localStorage'
 import { signInAnonymously, User as FirebaseUser } from 'firebase/auth'
+import { useIsomorphicEffect } from '~/utils/utilHooks'
 
 const signIn = async () => {
   try {
@@ -72,9 +73,10 @@ export const useSignOut = () => {
 
 export const useAuth = () => {
   const router = useRouter()
+  const isomorphicEffect = useIsomorphicEffect()
   const [currentUser, setCurrentUser] = useState<null | FirebaseUser>(null)
 
-  useLayoutEffect(
+  isomorphicEffect(
     () =>
       auth.onAuthStateChanged((user) => {
         user ? setCurrentUser(user) : router.push(routes.home)
