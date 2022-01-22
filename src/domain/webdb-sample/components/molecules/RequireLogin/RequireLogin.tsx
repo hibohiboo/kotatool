@@ -1,5 +1,5 @@
 import { Button } from '~/domain/webdb-sample/components/atoms/Button'
-import { signIn } from 'next-auth/client'
+import { signIn } from 'next-auth/react'
 import styles from './styles.module.css'
 // ___________________________________________________________________________
 //
