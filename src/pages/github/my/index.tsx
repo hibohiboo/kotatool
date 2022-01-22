@@ -9,7 +9,7 @@ import type {
   GetServerSidePropsContext,
   InferGetServerSidePropsType,
 } from 'next'
-import { getSession } from 'next-auth/client'
+import { getSession } from 'next-auth/react'
 // ___________________________________________________________________________
 //
 type StaticProps = {

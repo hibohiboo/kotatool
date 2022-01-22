@@ -3,7 +3,7 @@ import { Template } from '~/domain/webdb-sample/components/templates/my/[repo]'
 import Error from '~/pages/github/_error'
 import { Octokit } from '@octokit/core'
 import type { Session } from 'next-auth'
-import { useSession } from 'next-auth/client'
+import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import React from 'react'
 import useSWR from 'swr'
@@ -39,7 +39,7 @@ function PageBase({ session, repo }: Props) {
 // ___________________________________________________________________________
 //
 export default function Page() {
-  const [session] = useSession()
+  const { data: session } = useSession()
   const router = useRouter()
   const repo = router.query.repo
   if (typeof repo !== 'string') {
