@@ -195,7 +195,7 @@ const Component: FC<{
                         })
                       }}
                     >
-                      {c ? (
+                      {c?.image?.url ? (
                         <Image
                           src={c.image.url}
                           alt={c.name}
